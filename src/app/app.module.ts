@@ -14,13 +14,28 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
+import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { SigninComponent } from './pages/signin/signin.component';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
+import { SecurityQuestionDetailComponent } from './pages/security-question-detail/security-question-detail.component';
+import { SessionGuard } from './shared/guards/session.guard';
+import { CookieService } from 'ngx-cookie-service';
+import { SessionService } from './shared/services/session.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     BaseLayoutComponent,
     AuthLayoutComponent,
-    HomeComponent
+    HomeComponent,
+    SecurityQuestionCreateComponent,
+    SecurityQuestionListComponent,
+    SigninComponent,
+    UserDetailsComponent,
+    UserListComponent,
+    SecurityQuestionDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +49,11 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [
+    SessionGuard,
+    CookieService,
+    SessionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,6 +9,10 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+const SecurityQuestionApi = require('./routes/security-question-api');
+const UserApi = require('./routes/user-api');
+const SessionApi = require('./routes/session-api');
+
 /**
  * App configurations
  */
@@ -26,7 +30,7 @@ app.use(cors());
 const port = process.env.PORT || 3000; // server port
 
 // TODO: This line will need to be replaced with your actual database connection string
-const conn = 'mongodb+srv://21216666:Kenneth37@buwebdev-cluster-1-z8vdl.mongodb.net/nodebucket?retryWrites=true&w=majority';
+const conn = 'mongodb+srv://21216666:Kenneth37@buwebdev-cluster-1-z8vdl.mongodb.net/bcrs?retryWrites=true&w=majority';
 
 /**
  * Database connection
@@ -45,6 +49,14 @@ mongoose.connect(conn, {
 /**
  * API(s)
  */
+
+ /**
+ * Security Questions APIs
+ */
+  app.use('/api/users', UserApi);
+  app.use('/api/session', SessionApi);
+  app.use('/api/security-questions', SecurityQuestionApi);
+
 
 /**
  * Create and start server
