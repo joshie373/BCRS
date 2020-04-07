@@ -8,7 +8,7 @@ const saltRounds = 10; //default salt rounds for hashtag algorithm
 
 //FindAll
 router.get('/',function(req,res,next){
-    User.find({}).where(isDisabled).equals(false).exec(function(err,users){
+    User.find({}).where('isDisabled').equals(false).exec(function(err,users){
         if(err){
             console.log(err);
             return next(err);
