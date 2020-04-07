@@ -62,8 +62,8 @@ router.put('/:id', function(req,res,next){
                 text: req.body.text
             });
 
-                
-            SecurityQuestion.save(function(err,securityQuestion){
+
+            securityQuestion.save(function(err,securityQuestion){
                 if(err){
                     console.log(err);
                     return next(err);
@@ -90,7 +90,7 @@ router.delete('/:id', function(req,res,next){
                 securityQuestion.set({
                     isDisabled:true
                 });
-                SecurityQuestion.save(function(err,savedSecurityQuestion){
+                securityQuestion.save(function(err,savedSecurityQuestion){
                     if(err){
                         console.log(err);
                         return next(err);
