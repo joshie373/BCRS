@@ -11,9 +11,23 @@ import { BaseLayoutComponent } from './shared/base-layout/base-layout.component'
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import {
+  MatCardModule,
+  MatPaginatorModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatMenuModule,
+  MatDialogModule,
+  MatStepperModule,
+  MatSnackBarModule,
+  MatChipsModule,
+  MatIconModule,
+  MatTableModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatButtonToggleModule,
+  MatTabsModule
+} from '@angular/material';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SigninComponent } from './pages/signin/signin.component';
@@ -48,6 +62,22 @@ import { SessionService } from './shared/services/session.service';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatCardModule,
+    MatPaginatorModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatStepperModule,
+    MatSnackBarModule,
+    MatChipsModule,
+    MatButtonToggleModule,
+    MatTabsModule
   ],
   providers: [
     SessionGuard,
