@@ -41,13 +41,16 @@ export class SigninComponent implements OnInit {
       if (res['type'] == 'success') {
         console.log(res);
         this.cookieService.set('sessionuser', username, 1);
+        this.form.reset();
         this.router.navigate(['/']);
       } else { // else display error message
         this.errorMessage = res['text'];
+        
       }
     }, (err) => {
       console.log('signin.component/signin', err);
       this.errorMessage = err.error['text'];
+      this.form.controls.password.reset();
     });
   }
 

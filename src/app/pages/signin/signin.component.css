@@ -1,3 +1,7 @@
 .error{
     color: red;
 }
+
+.pwShow{
+cursor: pointer !important;
+}

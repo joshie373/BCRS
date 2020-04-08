@@ -1,8 +1,11 @@
 <div fxLayout="column">
 
+
+  <!-- [visibility]="profileShow ? 'visible': 'hidden'" -->
+
   <!-- navigation -->
   <nav fxFlex>
-    <mat-toolbar>
+    <mat-toolbar color="primary">
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
@@ -11,7 +14,25 @@
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
         <button class="navbar-link" mat-button>About</button>
       </div>
-
+      <div fxFlex="52"></div>
+      <!-- Shows only if the login name cookie exists -->
+      <div fxFlex *ngIf="cookieService.get('sessionuser')">
+        <span  class="mat-h4" >Hello {{cookieService.get('sessionuser')}}!  </span>
+        <!-- <mat-icon class="userShow" matSuffix >account_circle</mat-icon> -->
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Account Menu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/profile">
+            <mat-icon>account_circle</mat-icon>
+            <span>My Account</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </div>
     </mat-toolbar>
   </nav>
 

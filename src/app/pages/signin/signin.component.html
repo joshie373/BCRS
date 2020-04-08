@@ -20,14 +20,15 @@
             <mat-card-content>
                 <br>
                 <mat-card class="mat-elevation-z8" fxLayout="column" fxLayoutGap="10px">
-                    <form [formGroup]="form" (ngSubmit)="signin(); form.reset();" #loginForm>
+                    <form [formGroup]="form" (ngSubmit)="signin()" #loginForm>
                         <mat-card-content fxLayout="column">
                             <mat-form-field>
                                 <input matInput [formControl]="form.controls['username']" placeholder="Username" fxFlex/>
                             </mat-form-field>
                             <br/>
                             <mat-form-field>
-                                <input type="password" matInput [formControl]="form.controls['password']" placeholder="Password" fxFlex/>
+                                <input [type]="show ? 'text' : 'password' " matInput [formControl]="form.controls['password']" placeholder="Password" fxFlex />
+                                <mat-icon class="pwShow" matSuffix (click)="show = !show">{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </mat-form-field>
                             <a style="cursor: pointer;text-decoration: underline;" fxLayoutAlign="end"><small>Forgot Password?</small></a>
                         </mat-card-content>

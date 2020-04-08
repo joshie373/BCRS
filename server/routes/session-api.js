@@ -29,7 +29,7 @@ router.post('/signin',function(req,res,next){
                     console.log(`The password for username: ${req.body.username} is invalid`);
                     res.status(401).send({
                         type: 'error',
-                        text: `invalid username and/or password, please try again`,
+                        text: `Check your password and try again!`,
                         auth: false,
                         time_stamp: new Date()
                     });
