@@ -34,6 +34,14 @@ router.post('/signin',function(req,res,next){
                         time_stamp: new Date()
                     });
                 }
+            }else{
+                console.log(`The  username: ${req.body.username} is not found`);
+                res.status(401).send({
+                    type: 'error',
+                    text: `The  username: ${req.body.username} is not found!`,
+                    auth: false,
+                    time_stamp: new Date()
+                });
             }
         }
     })
