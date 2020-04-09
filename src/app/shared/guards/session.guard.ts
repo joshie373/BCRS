@@ -13,7 +13,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { SessionService } from '../services/session.service';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 
 export class SessionGuard implements CanActivate, CanActivateChild {
 
@@ -40,3 +40,36 @@ export class SessionGuard implements CanActivate, CanActivateChild {
     return true;
   }
 }
+
+//demo code.. in case aobve implementation breaks in regression
+// import { Injectable } from '@angular/core';
+// import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+// import { CookieService } from 'ngx-cookie-service';
+
+// @Injectable({providedIn: 'root'})
+
+// export class SessionGuard implements CanActivate {
+
+ 
+//   constructor(private router: Router, private cookieService: CookieService) {}
+
+
+//   canActivate(route: ActivatedRouteSnapshot): boolean {
+//     return this.loginCheck();
+//   }
+
+
+//   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+//     return this.loginCheck();
+//   }
+
+//   //checks if logged in
+//   private loginCheck() {
+//     //returns true if the function from the session service returns valid check for cookie
+//     // else redirects back to sigin page
+//     if (!this.sessionService.hasLoginCookie()) {
+//       this.router.navigate(['session/signin']);
+//     }
+//     return true;
+//   }
+// }

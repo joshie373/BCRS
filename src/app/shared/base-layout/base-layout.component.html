@@ -23,9 +23,13 @@
           <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item routerLink="/profile">
-            <mat-icon>account_circle</mat-icon>
-            <span>My Account</span>
+          <button mat-menu-item routerLink="/users">
+            <mat-icon>people</mat-icon>
+            <span>Users</span>
+          </button>
+          <button mat-menu-item routerLink="/security-questions">
+            <mat-icon>security</mat-icon>
+            <span>Security Questions</span>
           </button>
           <button mat-menu-item (click)="logout()">
             <mat-icon>exit_to_app</mat-icon>

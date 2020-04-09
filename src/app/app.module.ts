@@ -22,12 +22,12 @@ import {
   MatSnackBarModule,
   MatChipsModule,
   MatIconModule,
-  MatTableModule,
   MatButtonModule,
   MatToolbarModule,
   MatButtonToggleModule,
   MatTabsModule
 } from '@angular/material';
+import {MatTableModule} from '@angular/material/table';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SigninComponent } from './pages/signin/signin.component';
@@ -37,6 +37,11 @@ import { SecurityQuestionDetailComponent } from './pages/security-question-detai
 import { SessionGuard } from './shared/guards/session.guard';
 import { CookieService } from 'ngx-cookie-service';
 import { SessionService } from './shared/services/session.service';
+import { UserDeleteDialogComponent } from './dialogs/user-delete-dialog/user-delete-dialog.component';
+import { SecurityQuestionDeleteDialogComponent } from './dialogs/security-question-delete-dialog/security-question-delete-dialog.component';
+import { UserRegistrationDialogComponent } from './dialogs/user-registration-dialog/user-registration-dialog.component';
+
+
 
 @NgModule({
   declarations: [
@@ -44,12 +49,15 @@ import { SessionService } from './shared/services/session.service';
     BaseLayoutComponent,
     AuthLayoutComponent,
     HomeComponent,
-    SecurityQuestionCreateComponent,
-    SecurityQuestionListComponent,
     SigninComponent,
-    UserDetailsComponent,
+    SecurityQuestionListComponent,
+    SecurityQuestionCreateComponent,
+    SecurityQuestionDetailComponent,
     UserListComponent,
-    SecurityQuestionDetailComponent
+    UserDetailsComponent,
+    UserDeleteDialogComponent,
+    SecurityQuestionDeleteDialogComponent,
+    UserRegistrationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,11 +65,12 @@ import { SessionService } from './shared/services/session.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled'}),
+    RouterModule.forRoot(AppRoutes, {
+      useHash: true,
+      enableTracing: false,
+      scrollPositionRestoration: 'enabled'
+    }),
     FlexLayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -83,6 +92,10 @@ import { SessionService } from './shared/services/session.service';
     SessionGuard,
     CookieService,
     SessionService
+  ],
+  entryComponents: [
+    SecurityQuestionDeleteDialogComponent,
+    UserDeleteDialogComponent
   ],
   bootstrap: [AppComponent]
 })
