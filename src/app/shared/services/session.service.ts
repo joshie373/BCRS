@@ -42,6 +42,11 @@ export class SessionService {
     return this.http.get<string>(`${this.baseURL}/${this.cookieService.get(this.cookie)}/role`);
   }
 
+   //getUserId
+   getUserId(): Observable<string> {
+    return this.http.get<string>(`${this.baseURL}/${this.cookieService.get(this.cookie)}/id`);
+  }
+
   //checks if login cookie exists already
   hasLoginCookie(): boolean {
     const userCookie = this.cookieService.get(this.cookie);

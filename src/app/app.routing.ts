@@ -9,6 +9,8 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { SecurityQuestionDetailComponent } from './pages/security-question-detail/security-question-detail.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
+import { RoleGuard } from './shared/guards/role.guard';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 export const AppRoutes: Routes = [
   {
@@ -20,20 +22,10 @@ export const AppRoutes: Routes = [
         component: HomeComponent,
         canActivate: [SessionGuard]
       },
-      // {
-      //   path: 'admin/security-questions',
-      //   component: SecurityQuestionListComponent,
-      //   canActivate: [RoleGuard]
-      // },
-      // {
-      //   path: 'admin/users',
-      //   component: UserListComponent,
-      //   canActivate: [RoleGuard]
-      // },
       {
         path: 'users',
         component: UserListComponent,
-        canActivate: [SessionGuard]
+        canActivate: [RoleGuard]
       },
       {
         path: 'users/:userId',
@@ -43,7 +35,7 @@ export const AppRoutes: Routes = [
       {
         path: 'security-questions',
         component: SecurityQuestionListComponent,
-        canActivate: [SessionGuard]
+        canActivate: [RoleGuard]
       },
       {
         path: 'security-questions/:questionId',
@@ -55,9 +47,11 @@ export const AppRoutes: Routes = [
         component: SecurityQuestionCreateComponent,
         canActivate:[SessionGuard]
       },
-      /*
-        New components go here...
-       */
+      {
+        path: 'profile/:userId',
+        component: UserProfileComponent,
+        canActivate:[SessionGuard]
+      }
     ]
   },
   {

@@ -25,8 +25,10 @@ import {
   MatButtonModule,
   MatToolbarModule,
   MatButtonToggleModule,
-  MatTabsModule
+  MatTabsModule,
+  MatDividerModule
 } from '@angular/material';
+
 import {MatTableModule} from '@angular/material/table';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
@@ -40,6 +42,8 @@ import { SessionService } from './shared/services/session.service';
 import { UserDeleteDialogComponent } from './dialogs/user-delete-dialog/user-delete-dialog.component';
 import { SecurityQuestionDeleteDialogComponent } from './dialogs/security-question-delete-dialog/security-question-delete-dialog.component';
 import { UserRegistrationDialogComponent } from './dialogs/user-registration-dialog/user-registration-dialog.component';
+import { RoleGuard } from './shared/guards/role.guard';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 
@@ -57,7 +61,8 @@ import { UserRegistrationDialogComponent } from './dialogs/user-registration-dia
     UserDetailsComponent,
     UserDeleteDialogComponent,
     SecurityQuestionDeleteDialogComponent,
-    UserRegistrationDialogComponent
+    UserRegistrationDialogComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -86,12 +91,14 @@ import { UserRegistrationDialogComponent } from './dialogs/user-registration-dia
     MatSnackBarModule,
     MatChipsModule,
     MatButtonToggleModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDividerModule
   ],
   providers: [
     SessionGuard,
     CookieService,
-    SessionService
+    SessionService,
+    RoleGuard
   ],
   entryComponents: [
     SecurityQuestionDeleteDialogComponent,
