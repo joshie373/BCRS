@@ -1,3 +1,10 @@
+// ============================================
+// ; Title:          security-question-delete-dialog.component.ts
+// ; Author:         Tyler Librandi
+// ; Date:           09 April 2020
+// ; Description:    Dialog for deleting security question
+// ;===========================================
+
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -11,7 +18,7 @@ export class SecurityQuestionDeleteDialogComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<SecurityQuestionDeleteDialogComponent>,
-    @Inject(MAT_DIALOG_DATA)data) { 
+    @Inject(MAT_DIALOG_DATA)data) {
       this.questionId = data.questionId;
     }
 

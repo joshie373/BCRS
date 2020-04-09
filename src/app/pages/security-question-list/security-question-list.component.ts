@@ -1,4 +1,10 @@
-// TODO- tyler add attribution
+// ============================================
+// ; Title:          security-question-list.component.ts
+// ; Author:         Tyler Librandi
+// ; Date:           09 April 2020
+// ; Description:    Security question list
+// ;===========================================
+
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';

@@ -1,3 +1,10 @@
+// ============================================
+// ; Title:          security-question-create.component.ts
+// ; Author:         Tyler Librandi
+// ; Date:           09 April 2020
+// ; Description:    Creates security question
+// ;===========================================
+
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -25,7 +32,7 @@ export class SecurityQuestionCreateComponent implements OnInit {
   //create
   create(){
     this.http.post('/api/security-questions',{
-      text:this.form.controls.text.value, 
+      text:this.form.controls.text.value,
     }).subscribe(res =>{
       this.router.navigate(['/security-questions']);
     });
