@@ -3,7 +3,7 @@
 ; Title: signin.component.html
 ; Author: Karie Funk
 ; Modified by: Karie Funk
-; Date: 07 April 2020
+; Date: 09 April 2020
 ; Description: This is the sign in component
 ; for BCRS
 ;===========================================
@@ -16,22 +16,27 @@
             <mat-card-title class="signin-title mat-headline">Bob's Computer Repair Shop</mat-card-title>
             <mat-card-subtitle class="signin-title mat-headline">Sign In</mat-card-subtitle>
             <br>
+            <!--Will display error message if username or password is entered incorrectly-->
             <small class="error" *ngIf="errorMessage">{{ errorMessage }}<br></small>
             <mat-card-content>
                 <br>
                 <mat-card class="mat-elevation-z8" fxLayout="column" fxLayoutGap="10px">
+                    <!--Login Form-->
                     <form [formGroup]="form" (ngSubmit)="signin()" #loginForm>
                         <mat-card-content fxLayout="column">
+                            <!--Input for username in login form-->
                             <mat-form-field>
                                 <input matInput [formControl]="form.controls['username']" placeholder="Username" fxFlex/>
                             </mat-form-field>
                             <br/>
+                            <!--Password Visibility Feature-->
                             <mat-form-field>
                                 <input [type]="show ? 'text' : 'password' " matInput [formControl]="form.controls['password']" placeholder="Password" fxFlex />
                                 <mat-icon class="pwShow" matSuffix (click)="show = !show">{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </mat-form-field>
                             <a style="cursor: pointer;text-decoration: underline;" fxLayoutAlign="end"><small>Forgot Password?</small></a>
                         </mat-card-content>
+                        <!--Login Button-->
                         <mat-card-actions>
                             <div fxFlex></div>
                             <button type="submit" mat-raised-button>Login</button>

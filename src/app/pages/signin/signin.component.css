@@ -1,7 +1,20 @@
+/** 
+============================================
+; Title: signin.component.css
+; Author: Karie Funk
+; Modified by: Karie Funk
+; Date: 09 April 2020
+; Description: This is the styles page for
+; signin.component.html
+;===========================================
+*/
+
+/* Error message will display in red font */
 .error{
     color: red;
 }
 
+/* Password visibility icon will display pointer & is priority */
 .pwShow{
 cursor: pointer !important;
 }

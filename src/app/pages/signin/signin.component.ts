@@ -1,3 +1,17 @@
+/** 
+============================================
+; Title: signin.component.ts
+; Author: Karie Funk
+; Modified by: Karie Funk
+; Date: 09 April 2020
+; Description: This is the sign in component
+; for BCRS
+;===========================================
+*/
+
+// Start Program
+
+//Import Modules
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -5,11 +19,15 @@ import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
 import { environment } from 'src/environments/environment';
+
+//Component Details
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
+
+//Exporting Component
 export class SigninComponent implements OnInit {
   
   apiBaseUrl = `${environment.baseUrl}/api`;
@@ -30,7 +48,7 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  //sign in function
+  //Sign in Function
   signin() {
     const username = this.form.controls.username.value;
     const password = this.form.controls.password.value;
@@ -55,3 +73,5 @@ export class SigninComponent implements OnInit {
   }
 
 }
+
+// End Program
