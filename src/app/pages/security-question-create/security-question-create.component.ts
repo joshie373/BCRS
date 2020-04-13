@@ -1,10 +1,11 @@
 // ============================================
 // ; Title:          security-question-create.component.ts
 // ; Author:         Tyler Librandi
-// ; Date:           09 April 2020
+// ; Date:           12 April 2020
 // ; Description:    Creates security question
 // ;===========================================
 
+// Imports
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -17,6 +18,8 @@ import {HttpClient} from '@angular/common/http';
   templateUrl: './security-question-create.component.html',
   styleUrls: ['./security-question-create.component.css']
 })
+
+// Class export
 export class SecurityQuestionCreateComponent implements OnInit {
 
   form:FormGroup;

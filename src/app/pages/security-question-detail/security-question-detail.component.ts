@@ -1,10 +1,11 @@
 // ============================================
 // ; Title:          security-question-detail.component.ts
 // ; Author:         Tyler Librandi
-// ; Date:           09 April 2020
+// ; Date:           12 April 2020
 // ; Description:    Security question detail
 // ;===========================================
 
+// Imports
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,6 +17,8 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './security-question-detail.component.html',
   styleUrls: ['./security-question-detail.component.css']
 })
+
+// Class export
 export class SecurityQuestionDetailComponent implements OnInit {
   question: any;
   questionId: string;
