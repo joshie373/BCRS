@@ -44,7 +44,11 @@ export class UserRegistrationDialogComponent implements OnInit {
   //init function
   ngOnInit() {
     this.accountForm = this.fb.group({
-      username: [null, [Validators.required]],
+      username: [
+        null, 
+        [Validators.required]
+        //,[this.isAvailable.bind(this)] //uncomment once verify API done.[TODO]-josh 
+      ],
       password: [
         null,
         Validators.compose([
@@ -84,7 +88,6 @@ export class UserRegistrationDialogComponent implements OnInit {
       this.user.address = this.addressForm.controls.addressLine1.value + " " + this.addressForm.controls.city.value + ", " + this.addressForm.controls.state.value + " " + this.addressForm.controls.postalCode.value;
     });
 
-
     // security question form validators
     this.sqForm = this.fb.group({
       questionId1: [null, [Validators.required]],
@@ -97,7 +100,16 @@ export class UserRegistrationDialogComponent implements OnInit {
     });
   }
 
-  //quesiton getter function
+  //custom validator for checking if username already exists.
+  //uncomment after verify API is built.[TODO]-josh
+  // isAvailable(control: FormControl) {
+  //   return this.http.get(this.apiBaseUrl + '/session/verify/users/' + control.value).pipe(map((username: any) => {
+  //     return username ? { usernameExists: true } : null;
+  //   }
+  //   ));
+  // }
+
+  //question getter function
   getSecurityQuestions() {
     this.user.securityQuestions = [];
 
@@ -125,33 +137,33 @@ export class UserRegistrationDialogComponent implements OnInit {
     this.dialogRef.close(null);
   }
 
-//function to sign in after complete registration
-signIn() {
-    
-    if (this.accountForm.valid
-      && this.sqForm.valid) {
-      this.http
-        .post(`${this.apiBaseUrl}/session/register`, this.user)
-        .subscribe(
-          (res:any) => {
-            // if result is returned, then signin
-            if (res['type'] == 'success') {
-              console.log('user-registration-dialog.component/signIn', 'success', res);
-              this.username = res['username'];
-            }
-          },
-          (err) => {
-            console.log('user-registration-dialog.component/signIn', 'error', err);
-          },
-          () => {
-            if (this.username) {
-              this.dialogRef.close(this.username);
-            }
+  //function to sign in after complete registration
+  signIn() {
+      
+      if (this.accountForm.valid
+        && this.sqForm.valid) {
+        this.http
+          .post(`${this.apiBaseUrl}/session/register`, this.user)
+          .subscribe(
+            (res:any) => {
+              // if result is returned, then signin
+              if (res['type'] == 'success') {
+                console.log('user-registration-dialog.component/signIn', 'success', res);
+                this.username = res['username'];
+              }
+            },
+            (err) => {
+              console.log('user-registration-dialog.component/signIn', 'error', err);
+            },
+            () => {
+              if (this.username) {
+                this.dialogRef.close(this.username);
+              }
 
-          }
-        );
+            }
+          );
+      }
     }
-  }
 
   //shows Error Message
   private displayMessage(message: string) {
@@ -160,4 +172,5 @@ signIn() {
       duration: 10000
     });
   }
+
 }
