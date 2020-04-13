@@ -12,6 +12,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class UserDetailsComponent implements OnInit {
 
+  //variables
   username: string;
   user: any;
   userId: string;
@@ -28,6 +29,7 @@ export class UserDetailsComponent implements OnInit {
       this.userId = this.route.snapshot.paramMap.get('userId');
       console.log(this.userId);
 
+      //http call to get the users and set form fields
       this.http.get('/api/users/' + this.userId).subscribe(res => {
         this.user = res;
       },err =>{
@@ -43,6 +45,7 @@ export class UserDetailsComponent implements OnInit {
       });
     }
   
+  //init function
   ngOnInit() {
     this.form = this.fb.group({
       firstname: [null,Validators.compose([Validators.required])],

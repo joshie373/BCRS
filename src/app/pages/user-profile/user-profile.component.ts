@@ -44,14 +44,16 @@ export class UserProfileComponent implements OnInit {
       });
     }
   
+  //initialize function
   ngOnInit() {
     
+    //uses the router to extract and map the extras passed in from the user profile page. 
     this.router.events.pipe(
       filter(e => e instanceof NavigationStart),
       map(() => this.router.getCurrentNavigation().extras.state)
     );
   
-
+    //sets form field validators
     this.form = this.fb.group({
       firstname: [null,Validators.compose([Validators.required])],
       lastname: [null,Validators.compose([Validators.required])],
@@ -72,12 +74,24 @@ export class UserProfileComponent implements OnInit {
       email: this.form.controls.email.value,
       role: this.form.controls.role.value
     }).subscribe(res => {
-      this.router.navigate([`${this.previousPage}`]);
+      if(!this.previousPage){
+        this.router.navigate(['/']);
+      }
+      else{
+        this.router.navigate([`${this.previousPage}`]);
+      }
     });
   }
 
   //cancel function
   cancel(){
-    this.router.navigate([`${this.previousPage}`]);
+    //handles redirect to last page after cancel of the 
+    if(!this.previousPage){
+      this.router.navigate(['/']);
+    }
+    else{
+      this.router.navigate([`${this.previousPage}`]);
+    }
+    
   }
 }

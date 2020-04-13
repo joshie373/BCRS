@@ -38,10 +38,10 @@ export class BaseLayoutComponent implements OnInit {
   viewProfile(userId){
     let currentPage = this.router.url;
     console.log(currentPage);
-    // this.router.navigate(['profile/'+userId],{state:{ previousPage:currentPage}});
     this.router.navigate(['profile/'+userId], { state: { previousPage: currentPage } });
   }
 
+  //init function
   ngOnInit() {
     this.userName = this.sessionService.getUser();
   }

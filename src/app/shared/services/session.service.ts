@@ -25,7 +25,7 @@ export class SessionService {
 
   constructor(private cookieService: CookieService, private http: HttpClient) { }
 
-  //function to get the usernfrom cookies
+  //function to get the userfrom cookies
   getUser(): string {
     const user = this.cookieService.get(this.cookie);
 
