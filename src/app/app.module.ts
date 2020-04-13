@@ -102,7 +102,8 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
   ],
   entryComponents: [
     SecurityQuestionDeleteDialogComponent,
-    UserDeleteDialogComponent
+    UserDeleteDialogComponent,
+    UserRegistrationDialogComponent
   ],
   bootstrap: [AppComponent]
 })

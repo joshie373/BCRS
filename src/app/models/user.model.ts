@@ -4,17 +4,13 @@ export class User {
     id: string;
     username: string;
     password: string;
-    firstName: string;
-    lastName: string;
+    firstname: string;
+    lastname: string;
     phoneNumber: string;
     email: string;
-    addressLine1: string;
-    addressLine2: string;
-    city: string;
-    state: string;
-    postalCode: string;
+    address: string;
     role: string;
     dateCreated: string;
     dateModified: string;
-    SecurityQuestions: UserSecurityQuestion[];
+    securityQuestions: UserSecurityQuestion[];
   }

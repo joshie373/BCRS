@@ -17,8 +17,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { environment } from 'src/environments/environment';
+import { UserRegistrationDialogComponent } from 'src/app/dialogs/user-registration-dialog/user-registration-dialog.component';
 
 //Component Details
 @Component({
@@ -39,7 +40,8 @@ export class SigninComponent implements OnInit {
     private cookieService: CookieService,
     private fb: FormBuilder,
     private http: HttpClient,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog,) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -72,6 +74,39 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  //resiter function
+  register() {
+    // declare and create the material dialog
+    const dialogRef = this.dialog.open(UserRegistrationDialogComponent, {
+      width: '70%',
+      height: '80%', // options to control height and width of dialog
+      disableClose: true, // the user cannot click in the overlay to close
+      // pass the title and message to the dialog
+      data: { id: null }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // the user was updated need to replace them in the array
+        this.cookieService.set('sessionuser', result, 1);
+        this.router.navigate(['/']);
+      }
+
+      // else they canceled nothing to do here
+    });
+  }
+
+  private displayMessage(message: string) {
+    // display the snackbar message for 10sec
+    this.snackBar.open(message, 'OK', {
+      duration: 10000
+    });
+  }
+  
+  
+  // End Program
+
+
 }
 
-// End Program
+

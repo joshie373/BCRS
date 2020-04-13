@@ -12,6 +12,9 @@
     <br>
     <mat-card class="mat-elevation-z8">
         <mat-card-title>Users Configuration</mat-card-title>
+        <mat-card-subtitle>
+            <button mat-button (click)="newUser()" color="accent">Add New User </button>
+        </mat-card-subtitle>
         <mat-card-content *ngIf="users">
             <table mat-table [dataSource]="users">
                 <ng-container matColumnDef="username">
