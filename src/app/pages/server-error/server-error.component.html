@@ -1,1 +1,21 @@
-<p>server-error works!</p>
+<head><link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"></head>
+<!-- <video controls src="assets/Comp_1.mp4"></video> -->
+<div id="hider"></div>
+<div fxLayout="column" >
+    <div fxFlex align="center"style="position: fixed; top:0;width: 100%;left:0;background-color: white;" >
+        <video autoplay muted id="video500">
+            <source src="assets/Comp_2.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <img src="assets/s5002.PNG" alt="" id="image500" style="display:none" >
+        <p id="wrong" class="wrong" style="display:none" >Something<br> went<br> wrong!!</p>
+        <p id="back" class="wrong2" style="display:none" >
+            We are sorry for your inconvenience!<br><br>
+            It is likely that <br>the error you experienced is normal.<br><br>
+            Click the button below to<br>
+            go safely back to the homepage!<br>
+            <button (click)="home()">Go Home</button>
+        </p>
+    </div>
+
+</div>
