@@ -44,6 +44,8 @@ import { SecurityQuestionDeleteDialogComponent } from './dialogs/security-questi
 import { UserRegistrationDialogComponent } from './dialogs/user-registration-dialog/user-registration-dialog.component';
 import { RoleGuard } from './shared/guards/role.guard';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { ServerErrorComponent } from './pages/server-error/server-error.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 
 
@@ -62,7 +64,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     UserDeleteDialogComponent,
     SecurityQuestionDeleteDialogComponent,
     UserRegistrationDialogComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ServerErrorComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

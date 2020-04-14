@@ -11,6 +11,8 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { RoleGuard } from './shared/guards/role.guard';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { ServerErrorComponent } from './pages/server-error/server-error.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const AppRoutes: Routes = [
   {
@@ -61,7 +63,19 @@ export const AppRoutes: Routes = [
       {
         path: 'signin',
         component: SigninComponent
+      },
+      {
+        path: '500',
+        component: ServerErrorComponent
+      },
+      {
+        path: '404',
+        component: NotFoundComponent
       }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: 'session/404'
   }
 ];
