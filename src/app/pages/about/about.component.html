@@ -1,0 +1,64 @@
+<!--
+============================================
+; Title: BCRS about.component.html
+; Author: Richard Krasso
+; Modified by: Karie Funk
+; Date: 14 April 2020
+; Description: This is the about HTML for
+; Bob's Computer Repair Shop
+; Photo Credit: Unsplash.com
+;===========================================
+-->
+
+<div fxLayout="column" class="main-welcome" fxLayoutGap=10px>
+    <h1 fxFlex class="title">
+        Bob's Computer Repair Shop<br />
+        <span class="subtitle">
+           Here is some helpful information on Bob's Computer Repair Shop
+
+        </span>
+    </h1>
+    <div class="about-content">
+        <mat-divider></mat-divider>
+        <br />
+        <p class="mat-body-4">
+            <span class="p-title mat-headline" style="text-decoration: underline;">About Us</span><br />
+            <br />
+            Welcome to Bob's Computer Repair Shop! Bob’s Computer Repair Shop 
+            has been serving the Omaha community since 2008. It began as in home 
+            business for Bob Schneider, but quickly grew into a retail location
+            in downtown Omaha. Our team consists of Bob Schneider (Owner), Seth Davis (Tech), 
+            Matthew Grant (Tech), & Katie Thomas (Administrative Assistant). 
+        </p> 
+        <img src="../../../assets/team.jpg" width="100%" height="60%">
+       <br />
+       <br />
+        <p class="mat-body-4">
+            <span class="p-title mat-headline" style="text-decoration: underline;">What We Do</span><br />
+            <br />
+            At Bob's Computer Repair Shop we offer several services to help you out with your computer needs.
+            We offer services such as password resets, spyware removal, RAM upgrades, software installations,
+            PC Tune-up, keyboard cleaning, and disk clean-up. The team at Bob’s Computer Repair Shop is highly 
+            skilled and handles each task with professionalism and quality work. What makes Bob's Computer
+            Repair Shop different from other computer shops is the fact that we offer lower prices compared 
+            to our competitors and we also offer exceptional customer service. We pride ourselves in putting
+            the customer first and making sure each customer is highly satisfied with the work we completed for them.
+        </p> 
+        <img src="../../../assets/tower.jpg" width="100%" height="60%">
+        <br />
+        <br />
+        <p class="mat-body-4">
+            <span class="p-title mat-headline" style="text-decoration: underline;">How It Works</span><br />
+            <br />
+            Bob’s Computer Repair Shop offers a reliable and safe way to create and submit an order online 
+            that is easy and convenient for all users. Once the user has chosen the type of service they need
+            and clicked submit, an invoice will appear on the screen that shows the total cost of the service,
+            plus the parts and labor. If you have any questions or concerns regarding your order please feel
+            free to contact us at (888)-888-8888 or send us an email at BCRS@gmail.com. Thank you!
+        </p> 
+        <br />
+        <br />
+    </div>
+</div>
+
+<router-outlet></router-outlet>

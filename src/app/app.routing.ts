@@ -8,6 +8,7 @@ import { SecurityQuestionCreateComponent } from './pages/security-question-creat
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { SecurityQuestionDetailComponent } from './pages/security-question-detail/security-question-detail.component';
 import { SigninComponent } from './pages/signin/signin.component';
+import { AboutComponent } from './pages/about/about.component'; 
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { RoleGuard } from './shared/guards/role.guard';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
@@ -22,6 +23,11 @@ export const AppRoutes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        canActivate: [SessionGuard]
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
         canActivate: [SessionGuard]
       },
       {

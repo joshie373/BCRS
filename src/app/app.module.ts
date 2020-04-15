@@ -46,6 +46,7 @@ import { RoleGuard } from './shared/guards/role.guard';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ServerErrorComponent } from './pages/server-error/server-error.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AboutComponent } from './pages/about/about.component';
 
 
 
@@ -66,7 +67,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     UserRegistrationDialogComponent,
     UserProfileComponent,
     ServerErrorComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
