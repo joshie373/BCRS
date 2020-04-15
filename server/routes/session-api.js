@@ -82,3 +82,16 @@ router.post('/register',function(req,res,next){
         }
     })
 });
+
+//verifyUser
+router.get('/verify/users/:username', function (req, res, next) {
+    User.findOne({ 'username': { $regex : `^${req.params.username}$`,$options:'i' }}, function (err, user) {
+      if (err) {
+        console.log('session api', err);
+        return next(err);
+      } else {
+        console.log('session api', user);
+        res.json(user);
+      }
+    })
+  })
