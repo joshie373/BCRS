@@ -1,0 +1,43 @@
+#video500{
+    overflow: hidden;
+    position: fixed;
+    top:-30%;
+    left: 6%;
+    background-color: white;
+}
+
+#image500{
+    overflow: hidden;
+    position: fixed;
+    top:2.69%;
+    left: 27.2%;
+    height: 89%;
+    background-color: white;
+}
+
+#hider{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background-color: white;
+}
+
+.wrong{
+    font-family: 'VT323', monospace;
+    position: fixed;
+    top:15%;
+    left: 10%;
+    font-size: 4em;
+    text-align: left;
+}
+
+.wrong2{
+    font-family: 'VT323', monospace;
+    position: fixed;
+    top:25%;
+    right: 2%;
+    font-size: 1.5em;
+    text-align: right;
+}
