@@ -1,0 +1,17 @@
+.backgroundTop{
+    background-color: rgba(12, 18, 8, 0.93);
+    height: 100%;
+}
+
+.backgroundBottom{
+    height: 100%;
+    color: black;
+    font-family: 'VT323', monospace;
+    font-size: 1.2em;
+}
+
+.error{
+    font-family: 'VT323', monospace;
+    font-size: 6em;
+    color: white;
+}

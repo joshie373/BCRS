@@ -104,6 +104,19 @@ router.delete('/:id', function(req,res,next){
         }
     });
 });
+
+//FindSelectedSecurityQuestions
+router.get('/:username/security-questions', function (req, res, next) {
+    User.findOne({'username': req.params.username}, function (err, user) {
+        if (err) {
+            console.log(err);
+            return next(err);
+        } else {
+            console.log(user);
+            res.json(user.securityQuestions);
+        }
+    })
+});
 module.exports = router;
 
 //findSecurityQuestionsByIds

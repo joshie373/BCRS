@@ -94,6 +94,33 @@ router.get('/verify/users/:username', function (req, res, next) {
         res.json(user);
       }
     })
+  })
+
+//resetPassword
+router.post('/users/:username/reset-password', function (req, res, next) {
+    const password = req.body.password;
+
+    User.findOne({'username': req.params.username}, function (err, user) {
+        if (err) {
+            console.log(err);
+            return next(err);
+        } else {
+            console.log(user);
+
+            let hashedPassword = bcrypt.hashSync(password, saltRounds);
+
+            user.set ({
+                password: hashedPassword
+            });
+            
+            user.save(function (err, user) {
+                if (err) {
+                    console.log(err);
+                    res.json(user);
+                }
+            })
+        }
+    })
 });
 
 //verify security questions
