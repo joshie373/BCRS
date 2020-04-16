@@ -103,7 +103,7 @@ router.post('/users/:username/reset-password', function (req, res, next) {
     User.findOne({'username': req.params.username}, function (err, user) {
         if (err) {
             console.log(err);
-            reutrn next(err);
+            return next(err);
         } else {
             console.log(user);
 
@@ -122,7 +122,6 @@ router.post('/users/:username/reset-password', function (req, res, next) {
         }
     })
 });
-
 
 //verify security questions
 router.post('/verify/users/:username/security-questions', function (req, res, next) {
