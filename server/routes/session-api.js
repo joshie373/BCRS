@@ -94,7 +94,6 @@ router.get('/verify/users/:username', function (req, res, next) {
         res.json(user);
       }
     })
-<<<<<<< HEAD
   })
 
 //resetPassword
@@ -124,9 +123,6 @@ router.post('/users/:username/reset-password', function (req, res, next) {
     })
 });
 
-module.exports = router;
-=======
-});
 
 //verify security questions
 router.post('/verify/users/:username/security-questions', function (req, res, next) {
@@ -157,4 +153,3 @@ router.post('/verify/users/:username/security-questions', function (req, res, ne
     }
   })
 });
->>>>>>> ae19682ed6d4970c631f0ba68fd72dd5797b9ad9
