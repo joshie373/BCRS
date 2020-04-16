@@ -95,3 +95,32 @@ router.get('/verify/users/:username', function (req, res, next) {
       }
     })
   })
+
+//resetPassword
+router.post('/users/:username/reset-password', function (req, res, next) {
+    const password = req.body.password;
+
+    User.findOne({'username': req.params.username}, function (err, user) {
+        if (err) {
+            console.log(err);
+            reutrn next(err);
+        } else {
+            console.log(user);
+
+            let hashedPassword = bcrypt.hashSync(password, saltRounds);
+
+            user.set ({
+                password: hashedPassword
+            });
+            
+            user.save(function (err, user) {
+                if (err) {
+                    console.log(err);
+                    res.json(user);
+                }
+            })
+        }
+    })
+});
+
+module.exports = router;
