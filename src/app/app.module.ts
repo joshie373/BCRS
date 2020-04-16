@@ -111,7 +111,8 @@ import { ForgotPasswordDialogComponent } from './dialogs/forgot-password-dialog/
   entryComponents: [
     SecurityQuestionDeleteDialogComponent,
     UserDeleteDialogComponent,
-    UserRegistrationDialogComponent
+    UserRegistrationDialogComponent,
+    ForgotPasswordDialogComponent
   ],
   bootstrap: [AppComponent]
 })
