@@ -1,15 +1,28 @@
 <!-- ============================================
 ; Title:          not-found.component.html
 ; Author:         JOshua HUghes
-; Date:           13 April 2020
+; Date:           15 April 2020
 ; Description:    custom 404 page
 ;=========================================== -->
+<head><link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"></head>
 <div fxLayout="column">
-    <div fxLayout="row">
-        <div fxFlex></div><!-- spacer div -->
-        <div fxFlex>
-            <h2>Uh oh!</h2>
+    <div fxFlex fxLayout="row" class="backgroundTop">
+        <div fxFlex align="center">
+            <br />
+            <img src="assets/warning.png" width="20%" alt="">
+            <br />
+            <span class="error">404 Error</span>
         </div>
-        <div fxFlex></div><!-- spacer div -->
+    </div>
+    <div fxFlex fxLayout='row' class="backgroundBottom">
+        <div fxFlex align="center">
+            <br />
+            <span class="backgroundBottom">We could not find that page.<br>
+            Check the URL that you entered to make sure it is correct<br>
+            and try again. If you got here by clicking a link, <br>
+            it is possible that this page has been moved or removed.
+            </span><br />
+            <button (click)="home()">Back to Home</button>
+        </div>
     </div>
 </div>

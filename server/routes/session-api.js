@@ -23,7 +23,7 @@ router.post('/signin',function(req,res,next){
                 if (passwordIsValid){
                     res.status(200).send({
                         type: 'success',
-                        auth: true, 
+                        auth: true,
                         username: user.username,
                         time_stamp: new Date()
                     });
@@ -57,7 +57,7 @@ router.post('/register',function(req,res,next){
 
     let u = {
         username: req.body.username,
-        password: hashedPassword, 
+        password: hashedPassword,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         phoneNumber: req.body.phoneNumber,
@@ -94,6 +94,7 @@ router.get('/verify/users/:username', function (req, res, next) {
         res.json(user);
       }
     })
+<<<<<<< HEAD
   })
 
 //resetPassword
@@ -124,3 +125,36 @@ router.post('/users/:username/reset-password', function (req, res, next) {
 });
 
 module.exports = router;
+=======
+});
+
+//verify security questions
+router.post('/verify/users/:username/security-questions', function (req, res, next) {
+  const answerSQ1 = req.body.answerSQ1.trim().toLowerCase();
+  const answerSQ2 = req.body.answerSQ2.trim().toLowerCase();
+  const answerSQ3 = req.body.answerSQ3.trim().toLowerCase();
+  User.findOne({ 'username': { $regex : `^${req.params.username}$`,$options:'i' }}, function (err, user) {
+    if (err) {
+      console.log('session api', err);
+      return next(err);
+    } else {
+      console.log('session api', user);
+      let validAnswer1 = answerSQ1 === user.securityQuestions[0].answer.trim().toLowerCase();
+      let validAnswer2 = answerSQ2 === user.securityQuestions[1].answer.trim().toLowerCase();
+      let validAnswer3 = answerSQ3 === user.securityQuestions[2].answer.trim().toLowerCase();
+      console.log('session api', validAnswer1, validAnswer2, validAnswer3)
+      if (validAnswer1 && validAnswer2 && validAnswer3) {
+        res.status(200).send({
+          type: 'success',
+          auth: true
+        })
+      } else {
+        res.status(200).send({
+          type: 'error',
+          auth: false
+        })
+      }
+    }
+  })
+});
+>>>>>>> ae19682ed6d4970c631f0ba68fd72dd5797b9ad9
