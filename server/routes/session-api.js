@@ -8,24 +8,24 @@ const saltRounds = 10; //default salt rounds for hashtag algorithm
 
 
 //user Sign-in
-router.post('/signin',function(req,res,next){
-    User.findOne({'username': req.body.username},function(err,user){
+router.post('/signin',function(req,res,next){ // post request
+    User.findOne({'username': req.body.username},function(err,user){ // uses User model and finds one username (which is unique) of the users
         if(err){
-            console.log(err);
-            return next(err);
+            console.log(err); // returns an error
+            return next(err); // jumps to the next task
         }else{
-            console.log(user);
+            console.log(user); // logs the securityQuestions to the console
 
             //checks if user already exists
             if(user){
-                let passwordIsValid = bcrypt.compareSync(req.body.password,user.password);
+                let passwordIsValid = bcrypt.compareSync(req.body.password,user.password); // encrypts the requested body's password
 
-                if (passwordIsValid){
-                    res.status(200).send({
+                if (passwordIsValid){ // if the password is valid
+                    res.status(200).send({ // sends a success status
                         type: 'success',
-                        auth: true,
+                        auth: true, // authorized
                         username: user.username,
-                        time_stamp: new Date()
+                        time_stamp: new Date() // notes the date
                     });
                 }else{
                     console.log(`The password for username: ${req.body.username} is invalid`);
@@ -112,7 +112,7 @@ router.post('/users/:username/reset-password', function (req, res, next) {
             user.set ({
                 password: hashedPassword
             });
-            
+
             user.save(function (err, user) {
                 if (err) {
                     console.log(err);

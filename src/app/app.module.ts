@@ -48,6 +48,7 @@ import { ServerErrorComponent } from './pages/server-error/server-error.componen
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ForgotPasswordDialogComponent } from './dialogs/forgot-password-dialog/forgot-password-dialog.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 
@@ -70,7 +71,8 @@ import { ForgotPasswordDialogComponent } from './dialogs/forgot-password-dialog/
     ServerErrorComponent,
     NotFoundComponent,
     AboutComponent,
-    ForgotPasswordDialogComponent
+    ForgotPasswordDialogComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
