@@ -143,13 +143,13 @@ router.post('/find-by-ids', function(req, res, next) {
       ];
 
       // we need to return the questions in the proper order
-      questions.forEach((q) => {
+      questions.forEach((question) => {
         // find the question that matches the id
-        const mq = securityQuestions.find((sq) => {
-          return sq.id === q.id;
+        const matchedQuestion = securityQuestions.find((securityQuestion) => {
+          return securityQuestion.id === question.id;
         });
-        if(mq){
-          q.text = mq.text;
+        if(matchedQuestion){
+            question.text = matchedQuestion.text;
         }
       })
 
