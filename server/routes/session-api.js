@@ -115,8 +115,11 @@ router.post('/users/:username/reset-password', function (req, res, next) {
 
             user.save(function (err, user) {
                 if (err) {
-                    console.log(err);
-                    res.json(user);
+                  console.log(err);
+                  res.json(user);
+                } else {
+                  console.log(err);
+                  res.json(user);
                 }
             })
         }

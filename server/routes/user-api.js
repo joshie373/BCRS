@@ -32,36 +32,37 @@ router.get('/:id',function(req,res,next){
     })
 });
 
-//createUser
-router.post('/',function(req,res,next){
-    let hashedPassword = bcrypt.hashSync(req.body.password,saltRounds); //salt/hash the password
+// //createUser (register)
+// router.post('/',function(req,res,next){
+//     let hashedPassword = bcrypt.hashSync(req.body.password,saltRounds); //salt/hash the password
 
-    let u = {
-        username: req.body.username,
-        password: hashedPassword, 
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        phoneNumber: req.body.phoneNumber,
-        address: req.body.address,
-        email:req.body.email
-    };
+//     let u = {
+//         username: req.body.username,
+//         password: hashedPassword,
+//         firstname: req.body.firstname,
+//         lastname: req.body.lastname,
+//         phoneNumber: req.body.phoneNumber,
+//         address: req.body.address,
+//         email: req.body.email
 
-    User.create(u,function(err,newUser){
-        if(err){
-            console.log(err);
-            return next(err);
-        }else{
-            console.log(newUser);
+//     };
 
-            res.status(200).send({
-                type: 'success',
-                auth: true,
-                username: newUser.username,
-                time_stamp: new Date()
-            })
-        }
-    })
-});
+//     User.create(u,function(err,newUser){
+//         if(err){
+//             console.log(err);
+//             return next(err);
+//         }else{
+//             console.log(newUser);
+
+//             res.status(200).send({
+//                 type: 'success',
+//                 auth: true,
+//                 username: newUser.username,
+//                 time_stamp: new Date()
+//             })
+//         }
+//     })
+// });
 
 //updateUser
 router.put('/:id',function(req,res,err){
@@ -74,8 +75,8 @@ router.put('/:id',function(req,res,err){
             user.set({
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
-                phoneNumber: req.body.phoneNumber, 
-                address: req.body.address, 
+                phoneNumber: req.body.phoneNumber,
+                address: req.body.address,
                 email: req.body.email,
                 role: req.body.role
             });
@@ -125,7 +126,7 @@ router.delete('/:id',function(req,res,next){
 router.get('/:username/role', (request, response) => {
     // Declare the username and get the value off the url if it exists
     var username = request.params && request.params.username ? request.params.username : null;
-  
+
     // if the username was not defined then return a bad request response
     if (!username) {
       // set the status code to 400, bad request and send a message
@@ -145,14 +146,14 @@ router.get('/:username/role', (request, response) => {
           response.status(200).json(user.role);
         }
       });
-    } 
+    }
 });
 
 //getUserId
 router.get('/:username/id', (request, response) => {
     // Declare the username and get the value off the url if it exists
     var username = request.params && request.params.username ? request.params.username : null;
-  
+
     // if the username was not defined then return a bad request response
     if (!username) {
       // set the status code to 400, bad request and send a message
@@ -172,8 +173,34 @@ router.get('/:username/id', (request, response) => {
           response.status(200).json(user._id);
         }
       });
-    } 
+    }
 });
 
+//FindSelectedSecurityQuestions
+router.get('/:username/security-questions', (request, response) => { // get request
+  var username;
+  if (request.params && request.params.username) { // if the username exists and contains the word username
+    username = request.params.username; // sets the username variable to whatever is present
+  } else {
+    username = null; // otherwise set it to null
+  }
 
+  if (!username) {
+    response.status(400).send('Request is invalid or missing the username.');
+  } else {
+    User.findOne({ 'username': username }, (err, user) => { // finds one username
+      // if there is an error
+      if (err) {
+        // log the error to the console
+        console.log('users api', 'An error occurred finding that username', err);
+        // return an http status code 500, server error and the error
+        response.status(500).send(err);
+      } else {
+        // return security questions
+        console.log('users api', user);
+        response.status(200).json(user.securityQuestions);
+      }
+    });
+  }
+});
 module.exports = router;
