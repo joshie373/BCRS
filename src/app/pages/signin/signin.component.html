@@ -34,7 +34,7 @@
                                 <input [type]="show ? 'text' : 'password' " matInput [formControl]="form.controls['password']" placeholder="Password" fxFlex />
                                 <mat-icon class="pwShow" matSuffix (click)="show = !show">{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </mat-form-field>
-                            <a style="cursor: pointer;text-decoration: underline;" fxLayoutAlign="end"><small>Forgot Password?</small></a>
+                            <a style="cursor: pointer;text-decoration: underline;" fxLayoutAlign="end" (click)="reset()"><small>Forgot Password?</small></a>
                         </mat-card-content>
                         <!--Login Button-->
                         <mat-card-actions>

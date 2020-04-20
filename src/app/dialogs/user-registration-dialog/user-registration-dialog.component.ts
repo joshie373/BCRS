@@ -46,8 +46,7 @@ export class UserRegistrationDialogComponent implements OnInit {
     this.accountForm = this.fb.group({
       username: [
         null, 
-        [Validators.required]
-        //,[this.isAvailable.bind(this)] //uncomment once verify API done.[TODO]-josh 
+        [Validators.required],[this.isValid.bind(this)]
       ],
       password: [
         null,
@@ -100,14 +99,13 @@ export class UserRegistrationDialogComponent implements OnInit {
     });
   }
 
-  //custom validator for checking if username already exists.
-  //uncomment after verify API is built.[TODO]-josh
-  // isAvailable(control: FormControl) {
-  //   return this.http.get(this.apiBaseUrl + '/session/verify/users/' + control.value).pipe(map((username: any) => {
-  //     return username ? { usernameExists: true } : null;
-  //   }
-  //   ));
-  // }
+  //validator that determines if username input is valid or not. 
+  isValid(control: FormControl){
+    return this.http.get(this.apiBaseUrl + '/session/verify/users/' + control.value).pipe(map((username: any) => {
+       return username ? { usernameExists: true } : null ;
+     }
+     ));
+   }
 
   //question getter function
   getSecurityQuestions() {

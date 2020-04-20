@@ -15,6 +15,8 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { ServerErrorComponent } from './pages/server-error/server-error.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { VerifySecurityQuestionsComponent } from './shared/verify-security-questions/verify-security-questions.component';
+import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
 
 export const AppRoutes: Routes = [
   {
@@ -75,6 +77,14 @@ export const AppRoutes: Routes = [
       {
         path: 'signin',
         component: SigninComponent
+      },
+      {
+        path: 'users/:username/verify-security-questions',
+        component: VerifySecurityQuestionsComponent
+      },
+      {
+        path: 'reset-password',
+        component: ResetPasswordComponent
       },
       {
         path: '500',

@@ -17,7 +17,7 @@ export class UserProfileComponent implements OnInit {
   form: FormGroup;
   roles: any;
   
-  previousPage = this.router.getCurrentNavigation().extras.state.previousPage;
+  previousPage: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,16 +42,21 @@ export class UserProfileComponent implements OnInit {
         this.form.controls.role.setValue(this.user.role);
         this.username = this.user.username;
       });
+
+      
+      try {
+        this.previousPage = this.router.getCurrentNavigation().extras.state.previousPage ;
+      } catch (error) {
+        if(error){
+          this.previousPage = '/'
+        }
+      }
     }
   
   //initialize function
   ngOnInit() {
-    
     //uses the router to extract and map the extras passed in from the user profile page. 
-    this.router.events.pipe(
-      filter(e => e instanceof NavigationStart),
-      map(() => this.router.getCurrentNavigation().extras.state)
-    );
+    this.router.events.pipe(filter(e => e instanceof NavigationStart),map(() => this.router.getCurrentNavigation().extras.state));
   
     //sets form field validators
     this.form = this.fb.group({
@@ -93,5 +98,10 @@ export class UserProfileComponent implements OnInit {
       this.router.navigate([`${this.previousPage}`]);
     }
     
+  }
+
+  //verifies username
+  resetPassword(){
+    this.router.navigate([`/session/users/${this.username}/verify-security-questions`]);
   }
 }

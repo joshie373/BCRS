@@ -49,7 +49,9 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ForgotPasswordDialogComponent } from './dialogs/forgot-password-dialog/forgot-password-dialog.component';
 import { ContactComponent } from './pages/contact/contact.component';
-
+import { VerifySecurityQuestionsComponent } from './shared/verify-security-questions/verify-security-questions.component';
+import {MatListModule} from '@angular/material/list';
+import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -72,7 +74,9 @@ import { ContactComponent } from './pages/contact/contact.component';
     NotFoundComponent,
     AboutComponent,
     ForgotPasswordDialogComponent,
-    ContactComponent
+    ContactComponent,
+    VerifySecurityQuestionsComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +106,8 @@ import { ContactComponent } from './pages/contact/contact.component';
     MatChipsModule,
     MatButtonToggleModule,
     MatTabsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule
   ],
   providers: [
     SessionGuard,

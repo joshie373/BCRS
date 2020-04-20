@@ -8,10 +8,11 @@
 ; for BCRS
 ;===========================================
 -->
-<div fxLayout="column" align="center">
+<div fxLayout="column" fxLayoutAlign="center center" style="width:80%">
     <br>
         <mat-card class="mat-elevation-z8">
             <mat-card-title>User Details for {{username}}</mat-card-title>
+            <mat-card-subtitle  fxLayoutAlign="center" (click)="resetPassword()" class="pwShow">Reset Password</mat-card-subtitle>
             <br />
             <form [formGroup]="form" (ngSubmit)="saveUser()" #userForm>
                 <mat-card-content>
