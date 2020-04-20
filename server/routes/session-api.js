@@ -127,7 +127,7 @@ router.post('/users/:username/reset-password', function (req, res, next) {
 
 //verify security questions
 router.post('/verify/users/:username/security-questions', function (req, res, next) {
-  const answerSQ1 = req.body.answerSQ1.trim().toLowerCase();
+  const answerSQ1 = req.body.answerSQ1.trim().toLowerCase(); // sets variable to the answers being entered into the body
   const answerSQ2 = req.body.answerSQ2.trim().toLowerCase();
   const answerSQ3 = req.body.answerSQ3.trim().toLowerCase();
   User.findOne({ 'username': { $regex : `^${req.params.username}$`,$options:'i' }}, function (err, user) {
