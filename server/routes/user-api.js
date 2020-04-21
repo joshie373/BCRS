@@ -32,38 +32,6 @@ router.get('/:id',function(req,res,next){
     })
 });
 
-// //createUser (register)
-// router.post('/',function(req,res,next){
-//     let hashedPassword = bcrypt.hashSync(req.body.password,saltRounds); //salt/hash the password
-
-//     let u = {
-//         username: req.body.username,
-//         password: hashedPassword,
-//         firstname: req.body.firstname,
-//         lastname: req.body.lastname,
-//         phoneNumber: req.body.phoneNumber,
-//         address: req.body.address,
-//         email: req.body.email
-
-//     };
-
-//     User.create(u,function(err,newUser){
-//         if(err){
-//             console.log(err);
-//             return next(err);
-//         }else{
-//             console.log(newUser);
-
-//             res.status(200).send({
-//                 type: 'success',
-//                 auth: true,
-//                 username: newUser.username,
-//                 time_stamp: new Date()
-//             })
-//         }
-//     })
-// });
-
 //updateUser
 router.put('/:id',function(req,res,err){
     User.findOne({'_id': req.params.id},function(err,user){
