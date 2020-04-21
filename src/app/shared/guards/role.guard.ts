@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { SessionService } from '../services/session.service';
 import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable()
@@ -10,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class RoleGuard implements CanActivate {
 
 
-  constructor(private router: Router, private sessionService: SessionService) { }
+  constructor(private router: Router, private http: HttpClient, private cookieService: CookieService, private sessionService: SessionService) { }
 
 
   //If the user is logged in return true otherwise route to login page
@@ -27,5 +29,9 @@ export class RoleGuard implements CanActivate {
         }
 
       }));
+  }
+
+  getRole() {
+    return this.http.get('/api/users/' + this.cookieService.get('sessionuser') + '/role');
   }
 }

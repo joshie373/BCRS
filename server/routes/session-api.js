@@ -83,7 +83,7 @@ router.post('/register',function(req,res,next){
     })
 });
 
-//verifyUser
+//verifyUser: This API will lookup a user by their username and return the document
 router.get('/verify/users/:username', function (req, res, next) {
     User.findOne({ 'username': { $regex : `^${req.params.username}$`,$options:'i' }}, function (err, user) {
       if (err) {
