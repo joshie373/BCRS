@@ -52,6 +52,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { VerifySecurityQuestionsComponent } from './shared/verify-security-questions/verify-security-questions.component';
 import {MatListModule} from '@angular/material/list';
 import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
+import { InvoiceSummaryDialogComponent } from './dialogs/invoice-summary-dialog/invoice-summary-dialog.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { ResetPasswordComponent } from './shared/reset-password/reset-password.c
     ForgotPasswordDialogComponent,
     ContactComponent,
     VerifySecurityQuestionsComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    InvoiceSummaryDialogComponent
   ],
   imports: [
     BrowserModule,
