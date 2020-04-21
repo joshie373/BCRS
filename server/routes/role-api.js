@@ -17,7 +17,6 @@ router.get('/',function(req,res,next){
     });
 });
 
-
 //findRoleById
 router.get('/:roleId',function(req,res,next){
     Role.findOne({'_id': req.params.roleId},function(err,role){
