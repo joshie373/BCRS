@@ -7,7 +7,7 @@ let securityQuestions = mongoose.Schema({
 
 let userSchema = mongoose.Schema({
     username:       {type:String,unique: true, dropDups:true},
-    password:       {type:String,required:true}, 
+    password:       {type:String,required:true},
     firstname:      {type:String},
     lastname:       {type:String},
     phoneNumber:    {type:String},

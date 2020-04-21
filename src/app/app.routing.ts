@@ -8,12 +8,15 @@ import { SecurityQuestionCreateComponent } from './pages/security-question-creat
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { SecurityQuestionDetailComponent } from './pages/security-question-detail/security-question-detail.component';
 import { SigninComponent } from './pages/signin/signin.component';
-import { AboutComponent } from './pages/about/about.component'; 
+import { AboutComponent } from './pages/about/about.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { RoleGuard } from './shared/guards/role.guard';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ServerErrorComponent } from './pages/server-error/server-error.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { VerifySecurityQuestionsComponent } from './shared/verify-security-questions/verify-security-questions.component';
+import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
 
 export const AppRoutes: Routes = [
   {
@@ -28,6 +31,11 @@ export const AppRoutes: Routes = [
       {
         path: 'about',
         component: AboutComponent,
+        canActivate: [SessionGuard]
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
         canActivate: [SessionGuard]
       },
       {
@@ -69,6 +77,14 @@ export const AppRoutes: Routes = [
       {
         path: 'signin',
         component: SigninComponent
+      },
+      {
+        path: 'users/:username/verify-security-questions',
+        component: VerifySecurityQuestionsComponent
+      },
+      {
+        path: 'reset-password',
+        component: ResetPasswordComponent
       },
       {
         path: '500',

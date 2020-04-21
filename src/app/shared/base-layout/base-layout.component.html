@@ -13,6 +13,7 @@
 
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
         <button class="navbar-link" routerLink="/about" mat-button>About</button>
+        <button class="navbar-link" routerLink="/contact" mat-button>Contact</button>
         <button class="navbar-link" mat-button [matMenuTriggerFor]="AdminMenu" aria-label="Account Menu" *ngIf="hasAdmin">Admin</button>
         <mat-menu #AdminMenu="matMenu">
           <button mat-menu-item routerLink="/users">

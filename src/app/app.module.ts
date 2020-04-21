@@ -48,7 +48,10 @@ import { ServerErrorComponent } from './pages/server-error/server-error.componen
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ForgotPasswordDialogComponent } from './dialogs/forgot-password-dialog/forgot-password-dialog.component';
-
+import { ContactComponent } from './pages/contact/contact.component';
+import { VerifySecurityQuestionsComponent } from './shared/verify-security-questions/verify-security-questions.component';
+import {MatListModule} from '@angular/material/list';
+import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -70,7 +73,10 @@ import { ForgotPasswordDialogComponent } from './dialogs/forgot-password-dialog/
     ServerErrorComponent,
     NotFoundComponent,
     AboutComponent,
-    ForgotPasswordDialogComponent
+    ForgotPasswordDialogComponent,
+    ContactComponent,
+    VerifySecurityQuestionsComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +106,8 @@ import { ForgotPasswordDialogComponent } from './dialogs/forgot-password-dialog/
     MatChipsModule,
     MatButtonToggleModule,
     MatTabsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule
   ],
   providers: [
     SessionGuard,
@@ -111,7 +118,8 @@ import { ForgotPasswordDialogComponent } from './dialogs/forgot-password-dialog/
   entryComponents: [
     SecurityQuestionDeleteDialogComponent,
     UserDeleteDialogComponent,
-    UserRegistrationDialogComponent
+    UserRegistrationDialogComponent,
+    ForgotPasswordDialogComponent
   ],
   bootstrap: [AppComponent]
 })
