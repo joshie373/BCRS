@@ -17,23 +17,23 @@ export class VerifySecurityQuestionsComponent implements OnInit {
   username: string;
   form: FormGroup;
 
-  constructor(private router: Router,private route: ActivatedRoute,private http: HttpClient, private fb: FormBuilder){ 
+  constructor(private router: Router,private route: ActivatedRoute,private http: HttpClient, private fb: FormBuilder){
 
-    this.username = this.route.snapshot.paramMap.get('username');
+    this.username = this.route.snapshot.paramMap.get('username'); // retrieves the username from the URL
     console.log(this.username);
 
-    this.http.get('/api/users/'+ this.username + '/security-questions').subscribe(res =>{
+    this.http.get('/api/users/'+ this.username + '/security-questions').subscribe(res =>{ //
       this.selectedSecurityQuestions = res;
       console.log(this.selectedSecurityQuestions);
     },err =>{
       console.log(err);
     },() =>{
-      this.http.post('/api/security-questions/find-by-ids',{
+      this.http.post('/api/security-questions/find-by-ids',{ // finds security questions by ids
         question1: this.selectedSecurityQuestions[0].questionId,
         question2: this.selectedSecurityQuestions[1].questionId,
         question3: this.selectedSecurityQuestions[2].questionId
       }).subscribe(res =>{
-        this.question1 = res[0].text;
+        this.question1 = res[0].text; // retrieves question text
         this.question2 = res[1].text;
         this.question3 = res[2].text;
 
@@ -46,7 +46,7 @@ export class VerifySecurityQuestionsComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      answerSQ1: [null, [Validators.required]],
+      answerSQ1: [null, [Validators.required]], // sets validators
       answerSQ2: [null, [Validators.required]],
       answerSQ3: [null, [Validators.required]],
     });
@@ -54,17 +54,17 @@ export class VerifySecurityQuestionsComponent implements OnInit {
 
   //verify security questions
   verifySecurityQuestions(){
-    const answerSQ1 = this.form.controls['answerSQ1'].value;
+    const answerSQ1 = this.form.controls['answerSQ1'].value; // retrieves form input for answer1
     const answerSQ2 = this.form.controls['answerSQ2'].value;
     const answerSQ3 = this.form.controls['answerSQ3'].value;
 
     this.http.post('/api/session/verify/users/' + this.username + '/security-questions',{
       answerSQ1: answerSQ1,
-      answerSQ2:answerSQ2,
-      answerSQ3:answerSQ3
+      answerSQ2: answerSQ2,
+      answerSQ3: answerSQ3
     }).subscribe(res =>{
       console.log(res);
-      if(res['auth']){
+      if(res['auth']){ // if auth is true, redirect to reset password page
         this.router.navigate(['/session/reset-password'],{queryParams: {isAuthenticated: true, username: this.username},skipLocationChange: true});
       }else{
         console.log("unable to verify security question answers")

@@ -30,14 +30,14 @@ export class ForgotPasswordDialogComponent implements OnInit {
     this.dialogRef.close(null);
   }
 
-  //redirects to the reset password page. 
+  //redirects to the reset password page.
   resetPassword(){
     this.username = this.form.controls.username.value;
     this.dialogRef.close(null);
     this.router.navigate([`/session/users/${this.username}/verify-security-questions`]);
   }
 
-  
+
   ngOnInit() {
     this.form = this.fb.group({
       username: [null, [Validators.required],[this.isValid.bind(this)]]
@@ -45,7 +45,7 @@ export class ForgotPasswordDialogComponent implements OnInit {
   }
 
 
-  //validator that determines if username input is valid or not. 
+  //validator that determines if username input is valid or not.
   isValid(control: FormControl){
     //takes the result of the verifyUsers api and maps it to a variable username
    return this.http.get(this.apiBaseUrl + '/session/verify/users/' + control.value).pipe(map((username: any) => {
