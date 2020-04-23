@@ -4,12 +4,12 @@
 ; Author: Professor Krasso
 ; Modified by: Karie Funk
 ; Date: 20 April 2020
-; Description: API for Invoice 
+; Description: API for Invoice
 ====================================================
 */
 
 const express = require('express');
-const Invoice = require('../db-models/invoice');
+const Invoice = require('../db_models/invoice');
 
 const router = express.Router();
 
