@@ -11,7 +11,7 @@
 -->
 <h1 style="font-weight: lighter; text-align: center;">Welcome to the Service Repair Page.</h1>
 <mat-card class="mat-elevation-z0" style="width: 65%; margin: 0 auto;">
-    <form #serviceRepairForm="ngForm" (ngSubmit)="submit(serviceRepairForm.value); serviceRepairForm.reset();"
+    <form #serviceRepairForm="ngForm" (ngSubmit)="submit(serviceRepairForm.value); serviceRepairForm.reset();">
         <mat-card-content>
         <!-- service repair -->
         <div fxLayout="column">
@@ -55,4 +55,5 @@
    <button mat-raised-button type="reset" color="warn">Cancel</button>
    <button mat-raised-button color="accent">Submit</button>
   </mat-card-actions>
+</form>
 </mat-card>

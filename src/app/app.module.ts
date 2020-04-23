@@ -26,7 +26,8 @@ import {
   MatToolbarModule,
   MatButtonToggleModule,
   MatTabsModule,
-  MatDividerModule
+  MatDividerModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 import {MatTableModule} from '@angular/material/table';
@@ -53,6 +54,7 @@ import { VerifySecurityQuestionsComponent } from './shared/verify-security-quest
 import {MatListModule} from '@angular/material/list';
 import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
 import { InvoiceSummaryDialogComponent } from './dialogs/invoice-summary-dialog/invoice-summary-dialog.component';
+import { ServiceRepairComponent } from './pages/service-repair/service-repair.component';
 
 
 @NgModule({
@@ -78,7 +80,8 @@ import { InvoiceSummaryDialogComponent } from './dialogs/invoice-summary-dialog/
     ContactComponent,
     VerifySecurityQuestionsComponent,
     ResetPasswordComponent,
-    InvoiceSummaryDialogComponent
+    InvoiceSummaryDialogComponent,
+    ServiceRepairComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +112,8 @@ import { InvoiceSummaryDialogComponent } from './dialogs/invoice-summary-dialog/
     MatButtonToggleModule,
     MatTabsModule,
     MatDividerModule,
-    MatListModule
+    MatListModule, 
+    MatCheckboxModule
   ],
   providers: [
     SessionGuard,
@@ -121,7 +125,8 @@ import { InvoiceSummaryDialogComponent } from './dialogs/invoice-summary-dialog/
     SecurityQuestionDeleteDialogComponent,
     UserDeleteDialogComponent,
     UserRegistrationDialogComponent,
-    ForgotPasswordDialogComponent
+    ForgotPasswordDialogComponent, 
+    InvoiceSummaryDialogComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -17,6 +17,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { VerifySecurityQuestionsComponent } from './shared/verify-security-questions/verify-security-questions.component';
 import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
+import { ServiceRepairComponent } from './pages/service-repair/service-repair.component';
 
 export const AppRoutes: Routes = [
   {
@@ -26,6 +27,11 @@ export const AppRoutes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        canActivate: [SessionGuard]
+      },
+      {
+        path: 'services-repair',
+        component: ServiceRepairComponent,
         canActivate: [SessionGuard]
       },
       {
