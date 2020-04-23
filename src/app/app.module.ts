@@ -59,6 +59,12 @@ import { RoleListComponent } from './pages/role-list/role-list.component';
 import { RoleDeleteDialogComponent } from './dialogs/role-delete-dialog/role-delete-dialog.component';
 import { RoleDetailComponent } from './pages/role-detail/role-detail.component';
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { ServiceCreateComponent } from './pages/service-create/service-create.component';
+import { ServiceListComponent } from './pages/service-list/service-list.component';
+import { ServiceDetailComponent } from './pages/service-detail/service-detail.component';
+import { ServiceDeleteDialogComponent } from './dialogs/service-delete-dialog/service-delete-dialog.component';
+import { PurchasesByServiceComponent } from './pages/purchases-by-service/purchases-by-service.component';
+import { ChartModule } from 'primeng/chart';
 
 
 @NgModule({
@@ -89,7 +95,12 @@ import { RoleCreateComponent } from './pages/role-create/role-create.component';
     RoleListComponent,
     RoleDeleteDialogComponent,
     RoleDetailComponent,
-    RoleCreateComponent
+    RoleCreateComponent,
+    ServiceCreateComponent,
+    ServiceListComponent,
+    ServiceDetailComponent,
+    ServiceDeleteDialogComponent,
+    PurchasesByServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -121,7 +132,8 @@ import { RoleCreateComponent } from './pages/role-create/role-create.component';
     MatTabsModule,
     MatDividerModule,
     MatListModule, 
-    MatCheckboxModule
+    MatCheckboxModule,
+    ChartModule
   ],
   providers: [
     SessionGuard,
@@ -135,7 +147,8 @@ import { RoleCreateComponent } from './pages/role-create/role-create.component';
     RoleDeleteDialogComponent,
     UserRegistrationDialogComponent,
     ForgotPasswordDialogComponent, 
-    InvoiceSummaryDialogComponent
+    InvoiceSummaryDialogComponent,
+    ServiceDeleteDialogComponent
   ],
   bootstrap: [AppComponent]
 })

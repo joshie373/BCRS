@@ -21,6 +21,10 @@ import { ServiceRepairComponent } from './pages/service-repair/service-repair.co
 import { RoleListComponent } from './pages/role-list/role-list.component';
 import { RoleDetailComponent } from './pages/role-detail/role-detail.component';
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { ServiceCreateComponent } from './pages/service-create/service-create.component';
+import { ServiceListComponent } from './pages/service-list/service-list.component';
+import { ServiceDetailComponent } from './pages/service-detail/service-detail.component';
+import { PurchasesByServiceComponent } from './pages/purchases-by-service/purchases-by-service.component';
 
 export const AppRoutes: Routes = [
   {
@@ -92,12 +96,35 @@ export const AppRoutes: Routes = [
         canActivate: [RoleGuard]
       },
 
+      //service routes
+      {
+        path: 'services/create/new',
+        component: ServiceCreateComponent,
+        canActivate:[RoleGuard]
+      },
+      {
+        path: 'services',
+        component: ServiceListComponent,
+        canActivate: [RoleGuard]
+      },
+      {
+        path: 'services/:serviceId',
+        component: ServiceDetailComponent,
+        canActivate: [RoleGuard]
+      },
 
       //profile route
       {
         path: 'profile/:userId',
         component: UserProfileComponent,
         canActivate:[SessionGuard]
+      },
+
+      //purchases graph
+      {
+        path: 'purchases-graph',
+        component: PurchasesByServiceComponent,
+        canActivate:[RoleGuard]
       }
     ]
   },
