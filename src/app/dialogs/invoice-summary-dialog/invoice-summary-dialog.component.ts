@@ -22,5 +22,8 @@ export class InvoiceSummaryDialogComponent implements OnInit {
 
   ngOnInit() {
   }
+  laborHours(){
+      return this.invoice.laborAmount/50
+  }
 
 }

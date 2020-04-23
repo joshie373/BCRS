@@ -36,11 +36,10 @@ export class ServiceRepairComponent implements OnInit {
     ];
 
     constructor(private http: HttpClient, private cookieService: CookieService, private fb: FormBuilder,
-                private dialog: MatDialog, private router: Router) {
-
-                    //get the username
-                    this.username = this.cookieService.get('sessionuser');
-                }  
+    private dialog: MatDialog, private router: Router) {
+        //get the username
+        this.username = this.cookieService.get('sessionuser');
+    }  
 
     ngOnInit() {
         this.form = this.fb.group({
@@ -49,6 +48,16 @@ export class ServiceRepairComponent implements OnInit {
             alternator: [null, null]
         });
     }
+
+    //function to check input and evaluate if character is a number or a decimal place. 
+    numberOnly(event): boolean {
+        const charCode = (event.which) ? event.which : event.keyCode;
+        if (charCode > 31 && (charCode < 45 || charCode > 57)) {
+          return false;
+        }
+        return true;
+    }
+
     
     submit(form) {
         console.log(form);
@@ -60,65 +69,64 @@ export class ServiceRepairComponent implements OnInit {
                 });
             }
         }
-    
 
-    const lineItems = [];
+        const lineItems = [];
 
-    //Build the invoice object
-    for (const savedService of this.services) {
-        for (const selectedService of selectedServiceIds) {
-            if (savedService.id === selectedService.id) {
-                  lineItems.push({
-                    title: savedService.title,
-                    price: savedService.price
-                });
+        //Build the invoice object
+        for (const savedService of this.services) {
+            for (const selectedService of selectedServiceIds) {
+                if (savedService.id === selectedService.id) {
+                    lineItems.push({
+                        title: savedService.title,
+                        price: savedService.price
+                    });
+                }
             }
         }
+
+        console.log(lineItems);
+        const partsAmount = parseFloat(form.parts);
+        const laborAmount = form.labor * 50;
+        const lineItemTotal = lineItems.reduce((prev, cur) => prev + cur.price, 0);
+        const total = partsAmount + laborAmount + lineItemTotal;
+
+        const invoice = {
+            lineItems: lineItems,
+            partsAmount: partsAmount.toFixed(2),
+            laborAmount: laborAmount.toFixed(2),
+            lineItemTotal: lineItemTotal.toFixed(2),
+            total: total.toFixed(2),
+            username: this.username,
+            orderDate: new Date()
+        };
+        console.log(invoice);
+
+        const dialogRef = this.dialog.open(InvoiceSummaryDialogComponent, {
+            data: {
+                invoice: invoice
+            },
+            disableClose: true,
+            width: '800px'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result === 'confirm') {
+                console.log('Invoice saved');
+
+                this.http.post('/api/invoices/' + invoice.username, {
+                    lineItems: invoice.lineItems,
+                    partsAmount: invoice.partsAmount,
+                    laborAmount: invoice.laborAmount,
+                    lineItemTotal: invoice.lineItemTotal,
+                    total: invoice.total,
+                    orderDate: invoice.orderDate
+                }) .subscribe(res => {
+                    this.router.navigate(['/'])
+                }, err => {
+                    console.log(err);
+                });
+            }
+
+        });
     }
-
-    console.log(lineItems);
-    const partsAmount = parseFloat(form.parts);
-    const laborAmount = form.labor * 50;
-    const lineItemTotal = lineItems.reduce((prev, cur) => prev + cur.price, 0);
-    const total = partsAmount + laborAmount + lineItemTotal;
-
-    const invoice = {
-        lineItems: lineItems,
-        partsAmount: partsAmount,
-        laborAmount: laborAmount,
-        lineItemTotal: lineItemTotal,
-        total: total,
-        username: this.username,
-        orderDate: new Date()
-    };
-    console.log(invoice);
-
-    const dialogRef = this.dialog.open(InvoiceSummaryDialogComponent, {
-        data: {
-            invoice: invoice
-        },
-        disableClose: true,
-        width: '800px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-        if (result === 'confirm') {
-            console.log('Invoice saved');
-
-            this.http.post('/api/invoice/' + invoice.username, {
-                lineItems: invoice.lineItems,
-                partsAmount: invoice.partsAmount,
-                laborAmount: invoice.laborAmount,
-                lineItemTotal: invoice.lineItemTotal,
-                total: invoice.total,
-                orderDate: invoice.orderDate
-            }) .subscribe(res => {
-                this.router.navigate(['/'])
-            }, err => {
-                console.log(err);
-            });
-    }
-
-    });
- }
 }

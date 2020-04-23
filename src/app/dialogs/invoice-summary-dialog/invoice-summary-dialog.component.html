@@ -31,7 +31,7 @@
         {{invoice.partsAmount | currency}}
       </mat-list-item>
       <mat-list-item>
-        Labor:
+        Labor: <span class="mat-small">({{laborHours()}} Hours * $50.00/hr)</span>
         <div fxFlex></div>
         {{invoice.laborAmount | currency}}
       </mat-list-item>

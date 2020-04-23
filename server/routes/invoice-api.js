@@ -22,7 +22,7 @@ router.post('/:username', function (req, res, next) {
     //create an invoice object literal for saving to MongoDB
     let invoice = {
         lineItems: req.body.lineItems,
-        partsAmount: req.body.laborAmount,
+        partsAmount: req.body.partsAmount,
         laborAmount: req.body.laborAmount,
         lineItemTotal: req.body.lineItemTotal,
         total: req.body.total,
