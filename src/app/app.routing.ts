@@ -18,6 +18,9 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { VerifySecurityQuestionsComponent } from './shared/verify-security-questions/verify-security-questions.component';
 import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
 import { ServiceRepairComponent } from './pages/service-repair/service-repair.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { RoleDetailComponent } from './pages/role-detail/role-detail.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
 
 export const AppRoutes: Routes = [
   {
@@ -54,6 +57,8 @@ export const AppRoutes: Routes = [
         component: UserDetailsComponent,
         canActivate: [SessionGuard]
       },
+
+      //security question routes
       {
         path: 'security-questions',
         component: SecurityQuestionListComponent,
@@ -62,13 +67,33 @@ export const AppRoutes: Routes = [
       {
         path: 'security-questions/:questionId',
         component: SecurityQuestionDetailComponent,
-        canActivate: [SessionGuard]
+        canActivate: [RoleGuard]
       },
       {
         path: 'security-questions/create/new',
         component: SecurityQuestionCreateComponent,
-        canActivate:[SessionGuard]
+        canActivate:[RoleGuard]
       },
+
+      //role routes
+      {
+        path: 'roles/create/new',
+        component: RoleCreateComponent,
+        canActivate:[RoleGuard]
+      },
+      {
+        path: 'roles',
+        component: RoleListComponent,
+        canActivate: [RoleGuard]
+      },
+      {
+        path: 'roles/:roleId',
+        component: RoleDetailComponent,
+        canActivate: [RoleGuard]
+      },
+
+
+      //profile route
       {
         path: 'profile/:userId',
         component: UserProfileComponent,

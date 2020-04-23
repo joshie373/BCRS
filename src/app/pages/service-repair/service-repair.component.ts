@@ -24,21 +24,23 @@ import { MatDialog } from '@angular/material/dialog';
 export class ServiceRepairComponent implements OnInit {
     form: FormGroup;
     username: string;
+    services: any;
 
-    services = [
-        {title: 'Password Reset', price: 39.99, id: '101'},
-        {title: 'Spyware Removal', price: 99.99, id: '102'},
-        {title: 'RAM Upgrade', price: 129.99, id: '103'},
-        {title: 'Software Installation', price: 49.99, id: '104'},
-        {title: 'PC Tune-up', price: 99.99, id: '105'},
-        {title: 'Keyboard Cleaning', price: 45.00, id: '106'},
-        {title: 'Disk Clean-up', price: 149.99, id: '107'}
-    ];
+    // services = [
+    //     {title: 'Password Reset', price: 39.99, id: '101'},
+    //     {title: 'Spyware Removal', price: 99.99, id: '102'},
+    //     {title: 'RAM Upgrade', price: 129.99, id: '103'},
+    //     {title: 'Software Installation', price: 49.99, id: '104'},
+    //     {title: 'PC Tune-up', price: 99.99, id: '105'},
+    //     {title: 'Keyboard Cleaning', price: 45.00, id: '106'},
+    //     {title: 'Disk Clean-up', price: 149.99, id: '107'}
+    // ]; 
 
     constructor(private http: HttpClient, private cookieService: CookieService, private fb: FormBuilder,
     private dialog: MatDialog, private router: Router) {
         //get the username
         this.username = this.cookieService.get('sessionuser');
+        this.getServices();
     }  
 
     ngOnInit() {
@@ -58,7 +60,7 @@ export class ServiceRepairComponent implements OnInit {
         return true;
     }
 
-    
+    //submit form function
     submit(form) {
         console.log(form);
         const selectedServiceIds = [];
@@ -129,4 +131,15 @@ export class ServiceRepairComponent implements OnInit {
 
         });
     }
+
+    //getServices
+    getServices(){
+        //http call to get the users and set form fields
+        this.http.get('/api/services').subscribe(res => {
+          this.services = res;
+          console.log("services",this.services);
+        },err =>{
+          console.log(err);
+        });
+      }
 }

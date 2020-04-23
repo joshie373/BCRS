@@ -25,4 +25,4 @@ let invoiceSchema = mongoose.Schema({
     orderDate: {type: Date}
 });
 
-module.exports = mongoose.model('Invoice', invoiceSchema);
+module.exports = mongoose.model('Invoice', invoiceSchema,'invoices');

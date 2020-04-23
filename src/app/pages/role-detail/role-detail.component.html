@@ -1,0 +1,33 @@
+<!-- ============================================
+; Title:          role-detail.component.html
+; Author:         JOshua HUghes
+; Date:           22 April 2020
+; Description:    role detail
+;=========================================== -->
+
+<div fxFlex="column">
+    <br>
+    <div fxLayout="row">
+        <div fxFlex></div>
+        <mat-card fxFlex="50" class="mat-elevation-z8">
+            <mat-card-title>Role Details</mat-card-title>
+            <br />
+            <form [formGroup]="form" (ngSubmit)="saveRole()" #role>
+                <mat-card-content>
+                    <div fxLayout="column" fxLayoutGap="10px">
+                        <mat-form-field>
+                            <input matInput type="text" [formControl]="form.controls['text']" placeholder="Enter Text">
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+                <br />
+                <mat-card-actions align="end">
+                    <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+                    <button mat-raised-button color="accent">Submit</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+        <div fxFlex></div>
+    </div>
+    <br>    
+</div>

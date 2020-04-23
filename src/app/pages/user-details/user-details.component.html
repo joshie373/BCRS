@@ -37,9 +37,8 @@
                         </mat-form-field>
 
                         <mat-form-field>
-                            <select matNativeControl  [formControl]="form.controls['role']" placeholder="Role">
-                                <option  value="standard">standard</option>
-                                <option  value="Admin">admin</option>
+                            <select matNativeControl  [formControl]="form.controls['role']" placeholder="Role" >
+                                <option *ngFor="let role of roles"  value="{{role.text}}" >{{role.text}}</option>
                             </select>
                         </mat-form-field>
                     </div>  

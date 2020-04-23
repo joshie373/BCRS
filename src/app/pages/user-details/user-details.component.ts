@@ -55,6 +55,7 @@ export class UserDetailsComponent implements OnInit {
       email: [null,Validators.compose([Validators.required])],
       role: [null,Validators.compose([Validators.required])]
     });
+    this.getRoles();
   }
 
   //saveUser function
@@ -74,5 +75,15 @@ export class UserDetailsComponent implements OnInit {
   //cancel function
   cancel(){
     this.router.navigate(['/users']);
+  }
+
+  getRoles(){
+    //http call to get the users and set form fields
+    this.http.get('/api/roles').subscribe(res => {
+      this.roles = res;
+      console.log("roles",this.roles);
+    },err =>{
+      console.log(err);
+    });
   }
 }

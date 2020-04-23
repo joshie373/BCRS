@@ -48,8 +48,6 @@ router.post('/signin',function(req,res,next){ // post request
         }
     })
 });
-module.exports = router;
-
 
 //createUser
 router.post('/register',function(req,res,next){
@@ -154,3 +152,5 @@ router.post('/verify/users/:username/security-questions', function (req, res, ne
     }
   })
 });
+
+module.exports = router;

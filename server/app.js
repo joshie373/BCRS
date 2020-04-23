@@ -14,6 +14,7 @@ const UserApi = require('./routes/user-api');
 const SessionApi = require('./routes/session-api');
 const InvoicesApi = require('./routes/invoice-api');
 const RolesApi = require('./routes/role-api');
+const ServicesApi = require('./routes/service-api');
 
 /**
  * App configurations
@@ -60,6 +61,7 @@ mongoose.connect(conn, {
   app.use('/api/security-questions', SecurityQuestionApi);
   app.use('/api/invoices', InvoicesApi);
   app.use('/api/roles', RolesApi);
+  app.use('/api/services', ServicesApi);
 
 
 /**

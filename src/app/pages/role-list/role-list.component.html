@@ -1,0 +1,53 @@
+<!--
+============================================
+; Title: role-list.component.html
+; Author: Joshua HUghes
+; Date: 04/22/2020
+; Modified By: Joshua Hughes
+; Description: Role list component page for admins
+;===========================================
+-->
+<div fxLayout="column" align="center">
+    <br>
+    <div fxLayout="row">
+        <div fxFlex></div>
+        <mat-card fxFlex="50" class="mat-elevation-z8">
+            <mat-card-title>Role Configuration</mat-card-title>
+            <mat-card-subtitle>
+                <button mat-button routerLink="/roles/create/new" color="accent">Create New </button>
+            </mat-card-subtitle>
+
+            <br />
+            <mat-card-content>
+                <p class="mat-small" style="font-style: italic;">*Note: Admin and Standard roles cannot be edited or deleted!</p>
+                <table mat-table [dataSource]="roles">
+                    <ng-container matColumnDef="role">
+                        <th mat-header-cell *matHeaderCellDef>Role</th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.text}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="functions">
+                        <th mat-header-cell *matHeaderCellDef>Functions</th>
+
+                        <td mat-cell *matCellDef="let element">
+                            <button *ngIf="element.text !='Admin' && element.text !='Standard'" mat-icon-button routerLink="/roles/{{element._id}}">
+                                <mat-icon color="accent">edit</mat-icon>
+                            </button>
+                            <button *ngIf="element.text !='Admin' && element.text !='Standard'" mat-icon-button (click)="delete(element._id)">
+                                <mat-icon color="accent">delete</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                </table>
+            </mat-card-content>
+        </mat-card>
+        <div fxFlex></div>
+    </div>
+    <br>
+</div>

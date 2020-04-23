@@ -55,6 +55,10 @@ import {MatListModule} from '@angular/material/list';
 import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
 import { InvoiceSummaryDialogComponent } from './dialogs/invoice-summary-dialog/invoice-summary-dialog.component';
 import { ServiceRepairComponent } from './pages/service-repair/service-repair.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { RoleDeleteDialogComponent } from './dialogs/role-delete-dialog/role-delete-dialog.component';
+import { RoleDetailComponent } from './pages/role-detail/role-detail.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
 
 
 @NgModule({
@@ -81,7 +85,11 @@ import { ServiceRepairComponent } from './pages/service-repair/service-repair.co
     VerifySecurityQuestionsComponent,
     ResetPasswordComponent,
     InvoiceSummaryDialogComponent,
-    ServiceRepairComponent
+    ServiceRepairComponent,
+    RoleListComponent,
+    RoleDeleteDialogComponent,
+    RoleDetailComponent,
+    RoleCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -124,6 +132,7 @@ import { ServiceRepairComponent } from './pages/service-repair/service-repair.co
   entryComponents: [
     SecurityQuestionDeleteDialogComponent,
     UserDeleteDialogComponent,
+    RoleDeleteDialogComponent,
     UserRegistrationDialogComponent,
     ForgotPasswordDialogComponent, 
     InvoiceSummaryDialogComponent
