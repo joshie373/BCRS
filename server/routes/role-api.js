@@ -24,13 +24,13 @@ router.get('/:roleId',function(req,res,next){
             console.log(err);
             return next(err);
         }else{
-            console.log(roles);
-            res.json(roles);
+            console.log(role);
+            res.json(role);
         }
     });
 });
 
-//findAllRoles
+//createRole
 router.post('/',function(req,res,next){
     const r = {
         text: req.body.text
