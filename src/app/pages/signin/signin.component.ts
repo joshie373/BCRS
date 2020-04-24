@@ -38,7 +38,7 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private cookieService: CookieService,
+    public cookieService: CookieService,
     private fb: FormBuilder,
     private http: HttpClient,
     private snackBar: MatSnackBar,

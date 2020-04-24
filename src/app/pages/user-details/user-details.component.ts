@@ -20,7 +20,7 @@ export class UserDetailsComponent implements OnInit {
   roles: any;
 
   constructor(
-    private cookieService: CookieService,
+    public cookieService: CookieService,
     private route: ActivatedRoute,
     private http: HttpClient,
     private fb: FormBuilder,

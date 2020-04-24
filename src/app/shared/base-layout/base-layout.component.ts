@@ -16,7 +16,7 @@ export class BaseLayoutComponent implements OnInit {
   userName: string;
   userId: string;
 
-  constructor(private cookieService: CookieService, private sessionService: SessionService, private router: Router, private dialog: MatDialog) {
+  constructor(public cookieService: CookieService, private sessionService: SessionService, private router: Router, private dialog: MatDialog) {
     this.sessionService
     .getUserRole()
     .subscribe((res) => {

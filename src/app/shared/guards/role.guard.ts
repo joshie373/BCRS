@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class RoleGuard implements CanActivate {
 
 
-  constructor(private router: Router, private http: HttpClient, private cookieService: CookieService, private sessionService: SessionService) { }
+  constructor(private router: Router, private http: HttpClient, public cookieService: CookieService, private sessionService: SessionService) { }
 
 
   //If the user is logged in return true otherwise route to login page

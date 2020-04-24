@@ -14,7 +14,7 @@ export class ResetPasswordComponent implements OnInit {
   username: string;
   form: FormGroup;
 
-  constructor(private router: Router,private route: ActivatedRoute,private http: HttpClient, private fb: FormBuilder, private cookieService: CookieService) {
+  constructor(private router: Router,private route: ActivatedRoute,private http: HttpClient, private fb: FormBuilder, public cookieService: CookieService) {
     this.isAuthenticated = this.route.snapshot.queryParamMap.get('isAuthenticated');
     this.username =  this.route.snapshot.queryParamMap.get('username');
     console.log(this.username);

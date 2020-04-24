@@ -23,7 +23,7 @@ export class SessionService {
   cookie = 'sessionuser';
   baseURL = `${environment.baseUrl}/api/users`;
 
-  constructor(private cookieService: CookieService, private http: HttpClient) { }
+  constructor(public cookieService: CookieService, private http: HttpClient) { }
 
   //function to get the userfrom cookies
   getUser(): string {

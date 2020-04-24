@@ -36,7 +36,7 @@ export class ServiceRepairComponent implements OnInit {
     //     {title: 'Disk Clean-up', price: 149.99, id: '107'}
     // ]; 
 
-    constructor(private http: HttpClient, private cookieService: CookieService, private fb: FormBuilder,
+    constructor(private http: HttpClient, public cookieService: CookieService, private fb: FormBuilder,
     private dialog: MatDialog, private router: Router) {
         //get the username
         this.username = this.cookieService.get('sessionuser');
