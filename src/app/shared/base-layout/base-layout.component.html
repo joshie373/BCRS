@@ -36,6 +36,10 @@
             <mat-icon>pie_chart</mat-icon>
             <span>Purchases By Service</span>
           </button>
+          <button mat-menu-item routerLink="/invoices">
+            <mat-icon>receipt</mat-icon>
+            <span>View Invoices</span>
+          </button>
         </mat-menu>
 
       </div>
@@ -52,6 +56,11 @@
             <mat-icon>person_outline</mat-icon>
             <span>My Profile</span>
           </button>
+          <button mat-menu-item routerLink="/invoices/{{cookieService.get('sessionuser')}}">
+            <mat-icon>receipt</mat-icon>
+            <span>View My Invoices</span>
+          </button>
+          <mat-divider></mat-divider>
           <button mat-menu-item (click)="logout()">
             <mat-icon>exit_to_app</mat-icon>
             <span>Logout</span>

@@ -65,6 +65,8 @@ import { ServiceDetailComponent } from './pages/service-detail/service-detail.co
 import { ServiceDeleteDialogComponent } from './dialogs/service-delete-dialog/service-delete-dialog.component';
 import { PurchasesByServiceComponent } from './pages/purchases-by-service/purchases-by-service.component';
 import { ChartModule } from 'primeng/chart';
+import { InvoicesListComponent } from './pages/invoices-list/invoices-list.component';
+import { UserInvoicesComponent } from './pages/user-invoices/user-invoices.component';
 
 
 @NgModule({
@@ -100,7 +102,9 @@ import { ChartModule } from 'primeng/chart';
     ServiceListComponent,
     ServiceDetailComponent,
     ServiceDeleteDialogComponent,
-    PurchasesByServiceComponent
+    PurchasesByServiceComponent,
+    InvoicesListComponent,
+    UserInvoicesComponent
   ],
   imports: [
     BrowserModule,

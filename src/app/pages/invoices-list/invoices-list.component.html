@@ -1,0 +1,76 @@
+<!--
+============================================
+; Title: invoice-list.component.html
+; Author: Joshua HUghes
+; Date: 04/22/2020
+; Modified By: Joshua Hughes
+; Description: invoice list component page for admins
+;===========================================
+-->
+<div fxLayout="column" align="center">
+    <br>
+        <mat-card class="mat-elevation-z8">
+            <mat-card-title>Invoices</mat-card-title>
+            <br />
+            <mat-card-content>
+                <table mat-table [dataSource]="invoices">
+                    <ng-container matColumnDef="orderDate">
+                        <th mat-header-cell *matHeaderCellDef>Order Date</th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.orderDate | date}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef >Id</th>
+                        <td mat-cell *matCellDef="let element">
+                            <span class="mat-small">{{element._id}}</span>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="username">
+                        <th mat-header-cell *matHeaderCellDef>User Name</th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.username}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="total">
+                        <th mat-header-cell *matHeaderCellDef>Total</th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.total | currency}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="partsAmount">
+                        <th mat-header-cell *matHeaderCellDef>Parts Total</th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.partsAmount | currency}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="laborAmount">
+                        <th mat-header-cell *matHeaderCellDef>Labor Total</th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.laborAmount | currency}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="lineItems">
+                        <th mat-header-cell *matHeaderCellDef>Items</th>
+                        <td mat-cell *matCellDef="let element">
+                            <ul *ngFor="let item of element.lineItems">
+                                <li>{{item.title}}</li>
+                            </ul>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="lineItemTotal">
+                        <th mat-header-cell *matHeaderCellDef>Items Total</th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.lineItemTotal | currency}}
+                        </td>
+                    </ng-container>
+
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns" class='mat-toolbar mat-accent'></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                </table>
+            </mat-card-content>
+        </mat-card>
+    <br>
+</div>

@@ -25,6 +25,8 @@ import { ServiceCreateComponent } from './pages/service-create/service-create.co
 import { ServiceListComponent } from './pages/service-list/service-list.component';
 import { ServiceDetailComponent } from './pages/service-detail/service-detail.component';
 import { PurchasesByServiceComponent } from './pages/purchases-by-service/purchases-by-service.component';
+import { InvoicesListComponent } from './pages/invoices-list/invoices-list.component';
+import { UserInvoicesComponent } from './pages/user-invoices/user-invoices.component';
 
 export const AppRoutes: Routes = [
   {
@@ -117,6 +119,18 @@ export const AppRoutes: Routes = [
       {
         path: 'profile/:userId',
         component: UserProfileComponent,
+        canActivate:[SessionGuard]
+      },
+
+      //invoice routes
+      {
+        path: 'invoices',
+        component: InvoicesListComponent,
+        canActivate:[RoleGuard]
+      },
+      {
+        path: 'invoices/:username',
+        component: UserInvoicesComponent,
         canActivate:[SessionGuard]
       },
 

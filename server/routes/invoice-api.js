@@ -48,7 +48,6 @@ router.post('/:username', function (req, res, next) {
 });
 
 /* FindPurchasesByService*/
-
 router.get('/purchases-graph', function (req, res, next) {
     //query to return a count of purchases by Service
     Invoice.aggregate([
@@ -78,6 +77,33 @@ router.get('/purchases-graph', function (req, res, next) {
 
             //return the purchases graph to the client
             res.json(purchasesGraph);
+        }
+    })
+});
+
+//findAllInvoices
+router.get('/', function (req, res, next) {
+    Invoice.find({}, function (err, invoices) {
+      if (err) {
+        console.log('invoice api', err);
+        return next(err);
+      } else {
+        console.log('invoice api', invoices);
+        res.json(invoices);
+      }
+    });
+});
+
+//findById
+router.get('/:username', function(req,res,next){
+    Invoice.find({'username':req.params.username},function(err,invoices){ 
+        if(err){
+            console.log(err); 
+            return next(err); 
+        }
+        else{
+            console.log(invoices); 
+            res.json(invoices);
         }
     })
 });
