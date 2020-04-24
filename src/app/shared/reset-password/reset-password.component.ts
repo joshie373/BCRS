@@ -13,6 +13,7 @@ export class ResetPasswordComponent implements OnInit {
   isAuthenticated: string;
   username: string;
   form: FormGroup;
+  show:boolean;
 
   constructor(private router: Router,private route: ActivatedRoute,private http: HttpClient, private fb: FormBuilder, public cookieService: CookieService) {
     this.isAuthenticated = this.route.snapshot.queryParamMap.get('isAuthenticated');

@@ -25,6 +25,7 @@ export class UserRegistrationDialogComponent implements OnInit {
   sqForm: FormGroup;
   username: string;
   questions: SecurityQuestion[];
+  show:boolean;
 
   constructor(
     private http: HttpClient,
