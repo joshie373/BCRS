@@ -4,5 +4,5 @@
 //
 export const environment = {
   production: true,
-  baseUrl: 'https://bcrs.herokuapp.com/'
+  baseUrl: 'https://bcrs.herokuapp.com'
 };
