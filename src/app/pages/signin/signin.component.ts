@@ -35,6 +35,7 @@ export class SigninComponent implements OnInit {
   apiBaseUrl = `${environment.baseUrl}/api`;
   form: FormGroup;
   errorMessage: string;
+  show:boolean;
 
   constructor(
     private router: Router,
