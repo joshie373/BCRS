@@ -3,5 +3,6 @@
 //    baseUrl: '<heroku link>'
 //
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'https://bcrs.herokuapp.com/'
 };
