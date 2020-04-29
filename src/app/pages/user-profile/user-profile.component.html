@@ -8,36 +8,74 @@
 ; for BCRS
 ;===========================================
 -->
-<div fxLayout="column" fxLayoutAlign="center center" style="width:80%">
+<div fxLayout="column" fxLayoutAlign="center"  >
     <br>
-        <mat-card class="mat-elevation-z8">
+        <mat-card class="mat-elevation-z8" >
             <mat-card-title>User Details for {{username}}</mat-card-title>
             <mat-card-subtitle  fxLayoutAlign="center" (click)="resetPassword()" class="pwShow">Reset Password</mat-card-subtitle>
             <br />
+
             <form [formGroup]="form" (ngSubmit)="saveUser()" #userForm>
                 <mat-card-content>
-                    <div fxLayout="column" fxLayoutGap="10px">
-                        <mat-form-field>
-                            <input type="text" matInput [formControl]="form.controls['firstname']" placeholder="First Name"/>
-                        </mat-form-field>
+                    <div fxLayout="row" fxLayoutGap="90px">
+                        <div fxFlex fxLayout="column" fxLayoutGap="10px">
+                            <h4>User Info</h4>
+                            <mat-divider></mat-divider>
+                            <mat-form-field>
+                                <input type="text" matInput [formControl]="form.controls['firstname']" placeholder="First Name"/>
+                            </mat-form-field>
+    
+                            <mat-form-field>
+                                <input type="text" matInput [formControl]="form.controls['lastname']" placeholder="Last Name"/>
+                            </mat-form-field>
+    
+                            <mat-form-field>
+                                <input type="text" matInput [formControl]="form.controls['phoneNumber']" placeholder="Phone Number"/>
+                            </mat-form-field>
+    
+                            <mat-form-field>
+                                <input type="text" matInput [formControl]="form.controls['address']" placeholder="Address"/>
+                            </mat-form-field>
+    
+                            <mat-form-field>
+                                <input type="email" matInput [formControl]="form.controls['email']" placeholder="Email"/>
+                            </mat-form-field>
+    
+                        </div>  
+                        <mat-divider [vertical]="true"></mat-divider>
+                        <div fxFlex fxLayout="column" fxLayoutGap="10px">
+                            <h4>Security Questions</h4>
+                            <mat-divider [inset]="true"></mat-divider>
+                            <h5>Question 1</h5>
+                            <mat-divider [inset]="true"></mat-divider>
+                            <mat-select  formControlName="question1">
+                                <mat-option *ngFor="let q of questions" [value]="q._id">{{q.text}}</mat-option>
+                            </mat-select>
+                            <mat-form-field>
+                                <input type="text" id="answer1" matInput [formControl]="form.controls['answer1']"/>
+                            </mat-form-field>
 
-                        <mat-form-field>
-                            <input type="text" matInput [formControl]="form.controls['lastname']" placeholder="Last Name"/>
-                        </mat-form-field>
+                            <mat-divider [inset]="true"></mat-divider>
+                            <h5>Question 2</h5>
+                            <mat-divider [inset]="true"></mat-divider>
+                            <mat-select  formControlName="question2">
+                                <mat-option *ngFor="let q of questions" [value]="q._id">{{q.text}}</mat-option>
+                            </mat-select>
+                            <mat-form-field>
+                                <input type="text" id="answer2" matInput [formControl]="form.controls['answer2']"  />
+                            </mat-form-field>
 
-                        <mat-form-field>
-                            <input type="text" matInput [formControl]="form.controls['phoneNumber']" placeholder="Phone Number"/>
-                        </mat-form-field>
-
-                        <mat-form-field>
-                            <input type="text" matInput [formControl]="form.controls['address']" placeholder="Address"/>
-                        </mat-form-field>
-
-                        <mat-form-field>
-                            <input type="email" matInput [formControl]="form.controls['email']" placeholder="Email"/>
-                        </mat-form-field>
-
-                    </div>  
+                             <mat-divider [inset]="true"></mat-divider>
+                            <h5>Question 3</h5>
+                            <mat-divider [inset]="true"></mat-divider>
+                            <mat-select  formControlName="question3">
+                                <mat-option *ngFor="let q of questions" [value]="q._id">{{q.text}}</mat-option>
+                            </mat-select>
+                            <mat-form-field>
+                                <input type="text" id="answer3" matInput [formControl]="form.controls['answer3']"  />
+                            </mat-form-field>
+                        </div>
+                    </div>
                 </mat-card-content>
 
                 <br />
@@ -46,6 +84,7 @@
                     <button mat-raised-button color="accent">Submit</button>
                 </mat-card-actions>
             </form>
+            
         </mat-card>
     <br>
 </div>

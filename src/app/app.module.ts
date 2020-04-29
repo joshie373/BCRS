@@ -67,6 +67,7 @@ import { PurchasesByServiceComponent } from './pages/purchases-by-service/purcha
 import { ChartModule } from 'primeng/chart';
 import { InvoicesListComponent } from './pages/invoices-list/invoices-list.component';
 import { UserInvoicesComponent } from './pages/user-invoices/user-invoices.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -137,7 +138,8 @@ import { UserInvoicesComponent } from './pages/user-invoices/user-invoices.compo
     MatDividerModule,
     MatListModule, 
     MatCheckboxModule,
-    ChartModule
+    ChartModule,
+    MatSelectModule
   ],
   providers: [
     SessionGuard,

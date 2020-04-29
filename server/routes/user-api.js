@@ -46,7 +46,8 @@ router.put('/:id',function(req,res,err){
                 phoneNumber: req.body.phoneNumber,
                 address: req.body.address,
                 email: req.body.email,
-                role: req.body.role
+                role: req.body.role,
+                securityQuestions: req.body.securityQuestions
             });
 
             user.save(function(err,savedUser){
